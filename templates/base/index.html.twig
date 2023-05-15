@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}}Accueil
+{% endblock %}
+
+	{% block stylesheets %}
+		<!-- Bootstrap CSS -->
+		<link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="{{ asset('css/acceuil.css') }}" rel="stylesheet">
+        <!-- Include AOS stylesheet -->
+        <link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
+	{% endblock %}
+
+
+{% block body %}
+
+    <main style="margin-bottom: 100px;">
+        <div class="banner">
+            <img class="img-fluid"src="images/logo/banniere.jpg" alt="Bannière">
+        </div>
+
+        <div class="banner-container">
+            <div class="banner-text text-white banner-text py-4 fs-2">Le site Instant Reboot est une plateforme où vous pourrez acheter les jeux de votre choix de manière rapide et sans encombre !<br>N'hésitez pas à nous laisser un <a class="bannertext text-white" href="{{path('avis')}}">avis</a>. Pour toutes demandes particulières, dirigez-vous vers notre rubrique <a class="bannertext text-white" href="{{path('support')}}">support</a></div>
+        </div>
+
+        <style>
+            .bannertext:hover {
+                color: rgb(0, 81, 255) !important;
+            }
+        </style>
+
+        <div class="row py-3 pt-5 d-flex justify-content-center">
+            <div class="col-9 h1 text-white banner-text pt-5" style="text-transform:none;">Tendances</div>
+        </div>
+
+        <div class="carouselle pb-5">
+            <div id="carouselExampleIndicators" class="carousel slide mx-auto" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                </div>
+
+                <div class="carousel-inner">
+                    {% for product in produits %}
+                    <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                        <a href="{{ path('leproduit', {'id': product.id, 'designation': product.designation}) }}"><img src="images/produits/{{product.image}}" class="d-block w-100 carousel-img" alt="{{ product.designation }}"></a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <div class="carousel-caption d-none d-md-block custom d-flex jystify-content-center">
+                                <h5 class="text-white">{{ product.designation }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="avis-container py-5" style="margin-top:20px;">
+        
+            <div class="row d-flex justify-content-center">
+                <div class="col d-flex pb-3 fw-bold text-white banner-text" style="font-size:35px; margin-left:7.5% ;text-transform:none;">Nos avis</div>
+            </div>
+            
+            <div class="row justify-content-center">
+                {% for avis in avis %}
+                    <div class="col-md-4 mx-5 mb-4">
+                        <div class="card mx-auto bg-dark custom-card" style="height: 300px">
+                            <div class="card-body">
+                                <p class="text-white fs-4" style="font-family: Comic Sans MS;">{{ avis.email }}</p>
+                                <div class="d-flex justify-content-between">
+                                    <div class="text-white pt-2 fs-5">Le {{ avis.dateEnvoi|date('d/m/Y') }}</div>
+                                    <div class="text-white fs-3">{{ avis.note }}</div>
+                                </div>
+                                <hr class="my-4">
+                                <p class="card-text text-white">{{ avis.commentaire }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    
+{% endblock %}

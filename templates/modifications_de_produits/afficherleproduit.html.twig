@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}} {{adminproduit.designation}}
+{% endblock %}
+
+{% block stylesheets %}
+	<!-- Customs CSS -->
+	<link href="{{ asset('css/afficher-gestionproduit.css') }}" rel="stylesheet"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+    <div class="back-cross">
+        <a onclick="window.history.back();"> 
+            <img clas="cross" src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/white-cross.svg">
+        </a>
+    </div>
+
+	<div class="container pt-5 ">
+		<div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card p-2">					
+						<img class="card-img-top img-fluid pb-2" src="http://s3-4676.nuage-peda.fr/jeux/public/images/produits/{{adminproduit.image}}" alt="{{ adminproduit.designation }}" style="height: 500px; object-fit: cover;">
+						<div class="card-body d-flex">
+							<h4 class="card-title fs-4 text-white text-decoration-none pb-2" style="font-family:Comic Sans MS;">{{ adminproduit.designation }}</h4>
+							<h4 class="text-white ms-auto fs-5">{{ adminproduit.prix }}€<h4>
+						</div>
+						<div class="card-footer justify-content-center ">
+							<h4 class="text-white ms-auto fs-5 py-3">{{ adminproduit.description }}<h4>
+						</div>
+                        
+					</div>
+                </div>
+        </div>
+    </div>
+
+    <div class="row pt-5"></div>
+    <div class="row pt-5"></div>
+    <div class="row pt-5"></div>
+    
+
+{% endblock %}
+
+
+    

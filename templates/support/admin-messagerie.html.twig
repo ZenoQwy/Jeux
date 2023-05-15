@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}}Support
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- Customs CSS -->
+    <link href="{{ asset('css/admin-messagerie.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    {{parent()}}
+        <script src="{{asset('js/deletemessagemodal.js')}}"> </script>
+{% endblock %}
+
+
+{% block body %}
+	<!--Message en bannière-->
+		<div class="banner-container" data-aos="fade-in" data-aos-delay="500">
+			<div class="text-white banner-text fs-2">Voici l'entièreté des messages des clients ayant rencontré un problème ou ayant une simple demande</div>
+		</div>
+	<!---->
+
+    {% if lesmessages == [] %}
+        <div style='margin-bottom:150px;'>
+			<div class="container pt-5">
+				<div class="row justify-content-center d-flex align-items-center pt-5">
+					<div class="col-md-12 text-center" style='margin-top:150px;'>
+						<img class="img-fluid" src="images/icones/mail-ouvert.svg" alt="Loupe" style=" object-fit: contain;"></img>
+						<div class="fs-1 pt-5 text-white" style="font-family: Comic Sans MS;">La messagerie est vide.</div>
+					</div>
+				</div>
+			</div>
+		</div>  
+    {% else %}
+        <div class="text-white d-flex justify-content-center" style="margin-bottom:300px; margin-top:100px;">
+            <table class="table table-dark table-hover" style="border: solid 3px black;">
+                <thead>
+                    <tr>
+                        <th style="color:blue;">Id</th>
+                        <th style="color:blue;">Envoyeur</th>
+                        <th style="color:blue;">Objet</th>
+                        <th style="color:blue;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for message in lesmessages %}
+                        <tr onclick="window.location.href='{{ path('adminmessage', { 'id': message.id }) }}';">
+                            <td> {{ message.id }}</td>
+                            <td> {{ message.envoyeur.email }}</td>
+                            <td> {{ message.objet }}</td>
+                            <td><a href="#" onclick="event.stopPropagation();" class="nav-link text-decoration-none deleteee" data-bs-toggle="modal" data-bs-target="#staticBackdro" data-nummessage="{{message.id}}"><img src="images/icones/poubelle.svg"></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+<!--Modal-->
+	<div class="modal fade" id="staticBackdro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title" id="staticBackdropLabel">Supprimer un message</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div> 
+				<div class="modal-body">
+					<p>Etes-vous sûr(e) de vouloir supprimer le message ?<br>
+                    <span id="nummessage"></span>
+				</div>
+				<div class="modal-footer">
+					<a type="button" class="btn btn-success rounded-4 text-light" data-bs-dismiss="modal">Annuler</a>
+					<a href="" id="lien" class="btn btn-danger rounded-4 text-light ">Confirmer</a>
+				</div> 
+			</div>
+		</div>
+	</div>
+<!--Fin Modal-->
+
+{% endblock %}
+

@@ -1,0 +1,102 @@
+.container {
+    width: auto;
+    margin: 0 auto;
+}
+
+.information {
+    min-height: 0;
+    align-items: center;
+    margin-top: 7px;
+}
+
+.information {
+    margin-top: 10px;
+    display: flex;
+    position: relative;
+    z-index: 1;
+    min-height: 26px;
+    width: auto;
+}
+.price {
+    color:white;
+    font-size: 15px;
+    text-shadow: 0 0 4px #000;
+    margin-left:auto;
+}
+
+.item {
+    margin: 15px;
+    width:  auto;
+    z-index: 1;
+    min-width: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.picture{
+    width: 400px;
+    height: 190px;
+    transition: all 0.3s ease-out;
+    border-radius: 10px;
+}
+
+.picture:hover {
+    transform: scale(1.08);
+}
+
+.title{
+    color:rgb(125, 125, 125)!important;
+    font-weight: bold;
+}
+
+.input-group {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  
+  .input-group-text {
+    color: white;
+    border-right: none;
+  }
+  
+  .input-group-text1 {
+    color: white;
+    border-left: none;
+  }
+  
+  .input-group-text svg {
+    margin-right: -1px;
+    cursor:pointer;
+  }
+  
+  .input-group-text1 svg {
+    margin-left: -1px;
+  }
+  
+  .rounded-right {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-left: 1px solid;
+    border-left-color: gray;
+  }
+
+  .form-control {
+
+    border-color: #272727;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
+
+  .banner-container {
+    background-color: #353535;
+    padding: 20px;
+    text-align:center;
+  }
+  
+  
+  .banner-text {
+    color: #fff;
+  }
+  

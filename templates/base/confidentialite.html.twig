@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Politique de confidentialité{% endblock %}
+
+	{% block stylesheets %}
+		<!-- Bootstrap CSS -->
+		<link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="{{ asset('css/acceuil.css') }}" rel="stylesheet">
+        <!-- Include AOS stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
+	{% endblock %}
+
+{% block body %}
+
+  <div class="pb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-6 d-flex justify-content-center">
+          <div class="row">
+            <div class="h2 pb-3 pt-5 text-center fw-bold text-white">Politique de confidentialité</div><br>
+            <div class="fs-4 pt-3 pb-5" style="color:#808080;">
+              Nous accordons une grande importance à la protection de vos données personnelles. Cette politique de confidentialité décrit comment nous collectons, utilisons et partageons vos données personnelles lorsque vous visitez notre site web.
+
+              <h4 class='text-white pt-5 pb-2' style="text-transform:none;">Collecte de données personnelles :</h4>
+              Nous pouvons collecter des informations personnelles telles que votre nom, votre adresse électronique, votre adresse postale et votre numéro de téléphone lorsque vous vous inscrivez sur notre site ou que vous passez une commande.
+
+              <h4 class='text-white pt-5 pb-2' style="text-transform:none;">Utilisation des données personnelles :</h4>
+              Nous utilisons vos informations personnelles pour traiter vos commandes et pour vous envoyer des informations sur nos produits et services. Nous pouvons également utiliser vos informations pour personnaliser votre expérience sur notre site.
+
+            <h4 class='text-white pt-5 pb-2' style="text-transform:none;"> Partage des données personnelles :</h4>
+              Nous ne vendons pas vos informations personnelles à des tiers. Nous pouvons partager vos informations avec des prestataires de services tiers tels que des sociétés de livraison pour traiter vos commandes.
+
+              <h4 class='text-white pt-5 pb-2' style="text-transform:none;">Sécurité des données personnelles :</h4>
+              Nous prenons des mesures de sécurité appropriées pour protéger vos données personnelles contre tout accès non autorisé ou toute modification, divulgation ou destruction.
+
+              <h4 class='text-white pt-5 pb-2' style="text-transform:none;"> Cookies :</h4>
+              Nous utilisons des cookies pour améliorer votre expérience sur notre site et pour collecter des informations sur la façon dont vous utilisez notre site. Vous pouvez configurer votre navigateur pour qu'il refuse tous les cookies ou pour qu'il vous avertisse lorsqu'un cookie est envoyé.
+
+              <h4 class='text-white pt-5 pb-2' style="text-transform:none;">Modifications de la politique de confidentialité :</h4>
+              Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Les modifications prendront effet immédiatement après leur publication sur notre site web.
+
+              <h4 class='text-white pt-5 pb-2' style="text-transform:none;">Contact :</h4>
+              Si vous avez des questions concernant notre politique de confidentialité, vous pouvez nous contacter à l'adresse e-mail suivante : tomdu951@gmail.com.              
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    
+  
+
+{% endblock %}

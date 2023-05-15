@@ -1,0 +1,200 @@
+.banner {
+    overflow: hidden;
+    position: relative;
+}
+
+.banner img {
+    display: block;
+    width: 100%;
+    height: 900px;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 80%);
+}
+
+.infos-produit{
+    width: 100%;
+    position: absolute;
+    top: 70%;
+    left: 0;
+    right: 0;
+}
+
+.col-left {
+    width: 45% !important;
+    margin-right: 40px;
+    border-radius: 20px;
+}
+
+.col-left img {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+
+
+.col-right {
+    width: 40% !important;
+    margin-left: 40px;
+    border-radius: 20px;
+}
+
+.propriete{
+    height: 100%;
+    background-image: linear-gradient(to bottom, transparent, #292929);
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(25px);
+}
+
+.btn-acheter {
+    background-image: linear-gradient(to top left, #0084ff, #000591);
+    border-radius: 10px;
+    font-weight: bold !important;
+    font-family: proximanova,arial,sans-serif !important;
+    text-transform: none !important;
+    font-size: 25px !important;
+    color:white !important;
+    width: 300px;
+    height: 50px !important;
+  
+}
+
+.panier {
+    background-image: linear-gradient(to top left, #0084ff, #000591);
+    border-radius: 10px;
+    font-weight: bold !important;
+    font-family: proximanova, arial, sans-serif !important;
+    text-transform: none !important;
+    font-size: 25px !important;
+    color: white !important;
+    width: 80px;
+    height: 50px !important;
+    display: flex; /* utilise flexbox pour centrer les éléments */
+    align-items: center; /* aligne verticalement les éléments au centre */
+  }
+
+.panier:hover {
+    background-image: linear-gradient(to top left, #0084ff, #0b006e);
+}
+
+.btn-acheter:hover {
+    background-image: linear-gradient(to top left, #0084ff, #0b006e);
+}
+
+.panier img {
+    margin: 0 auto; /* centre horizontalement l'image */
+}
+
+.panier:active,
+.btn-acheter:active {
+  background-image: linear-gradient(to top left, #0b006e, #0084ff);
+  /* Ajoutez ici d'autres styles pour l'effet de pression */
+  transform: translateY(2px); /* Déplace le bouton vers le bas de 2 pixels */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Ajoute une ombre légère */
+}
+
+.price{
+    justify-content: end;
+    font-family:  Comic Sans MS; 
+    font-size:50px !important;
+}
+
+.title-description{
+    font-size: 10px  ;
+
+}
+
+.fav {
+    width: 60px;
+    height: 60px;
+}
+
+@media (max-width: 767px) {
+    .banner img {
+        height: auto;
+        clip-path: none; /* Supprimer le clip-path sur les appareils mobiles pour afficher l'image en entier */
+    }
+
+    .price{
+        justify-content: center !important;
+        font-family:  Comic Sans MS; 
+        font-size:60px !important;
+    }
+
+    .col-left {
+        display: none;
+    }
+
+    .col-right {
+        width: 100% !important;
+        margin-left: 0px;
+        margin-top: 50px; /* Ajoutez un espace entre les colonnes sur les téléphones */
+    }
+
+    .btn-acheter {
+        width: 100%; /* Définissez la largeur du bouton "Acheter" sur 100% sur les téléphones */
+        margin-right: 30px;
+    }
+
+    .panier{
+        margin-right: 5px;
+    }
+
+    .infos-produit{
+        top:30%; 
+    }
+
+    .propriete{
+        width: 100% !important;
+        background-image: linear-gradient(to bottom, transparent, #353535);
+    }
+
+    .title-description{
+        font-size: 25px !important;
+
+    }
+
+    .fav {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
+
+.back-cross {
+    position: absolute;
+    top: 120px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    opacity: 0.7;
+    border-width: 100px;
+    
+  }
+  
+.back-cross:hover{
+    transform: scale(1.15);
+}
+
+.fav:hover {
+ transform: scale(1.10);
+}
+  
+
+.content {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    top: -230px;
+    margin-bottom: -230px;
+    position: relative;
+    width: auto;
+}
+
+.details {
+    margin: -15px;
+    display: flex;
+}
+
+

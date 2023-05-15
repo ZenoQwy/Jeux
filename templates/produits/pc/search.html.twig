@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}Recherche de produit
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<!-- Customs CSS -->
+	<link href="{{ asset('css/other-search.css') }}" rel="stylesheet"/>
+	<!-- Customs SVG -->
+	<link href="{{ asset('images/icones/plus.svg') }}" rel="stylesheet"/>
+	<!-- Include AOS stylesheet -->
+	<link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
+	<!-- Inclure les liens vers les icônes Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+        <script src="{{asset('js/deletemodal.js')}}"> </script>
+{% endblock %}
+
+{% block body %}
+	<!--Message en bannière-->
+		<div class="banner-container">
+			<div class="text-white banner-text h1 pt-3" style="text-transform: none;">Nos produits de la gamme Pc 
+				<span class="px-2">
+					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-pc-display" viewBox="0 0 16 16">
+						<path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V1Zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Zm2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0ZM9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5ZM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5ZM1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2H1.5Z"/>
+					</svg>
+				</span>
+			</div>
+		</div>
+	<!---->
+
+	<div style='margin-bottom:150px;'>
+		<div class="container py-2">
+			<!--Barre de recherche-->
+				<div class="d-flex justify-content-center pb-5">
+					<form class="py-4 w-100 text-center" style="width: 40%;" action="{{ path('search-pc') }}" method="get">
+						<span class="fs-5 text-white text-center">Voici les résultats liés à votre recherche</span>
+						<div class="input-group py-3">
+							<input id="search-input" class="form-control bg-primary text-white px-3 text-center" value="{{ recherche }}" type="text" placeholder="Minecraft, Carte playstation, RPG..." name="search-input" />
+							<a class=" input-group-prepend" href="{{ path('search-pc') }}">
+								<span id="backspace-btn" class="input-group-text bg-primary rounded-right">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+									</svg>
+								</span>
+							</a>
+						</div>
+					</form>
+				</div>
+			<!---->
+
+			{% if searchedproduit != [] %}
+				<!--Les cards des produits recherchés -->
+					<div class="row justify-content-center">
+						{% for produit in searchedproduit %}
+							<div class="col-md-4">
+								<div class="item">
+									<a href="{{ path('leproduit', {'id': produit.id, 'designation': produit.designation}) }}">
+										<picture>
+											<img class="picture" src="images/produits/{{produit.image}}" style="max-width: 100%;">
+										</picture>
+									</a>
+									<div class="information">
+										<div class="text">
+											<div class="name">
+												<span class="title">{{ produit.designation }}</span>
+											</div>
+										</div>
+										<div class="price px-2">{{ produit.prix }}€</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				<!---->
+			{% else %}
+				<!--Le text si la recherche ne mène à rien-->	
+					<div class="row justify-content-center d-flex align-items-center pt-5">
+						<div class="col-md-12 text-center">
+							<img class="img-fluid pt-5" src="images/icones/loupe.svg" alt="Loupe" style=" object-fit: contain;"></img>
+							<h4 class="fs-4 pt-4 text-white" style="font-family: Comic Sans MS;">Désolé, aucun résultat n'a été trouvé 😦<br>Il semble que nous n'ayons aucun produit correspondant à votre recherche.</h4>
+						</div>
+					</div>
+				<!---->	
+			{% endif %}
+		</div>
+	</div>
+
+{% endblock %}

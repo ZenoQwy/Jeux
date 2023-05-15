@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}Gestion des produits
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<!-- Customs CSS -->
+	<link href="{{ asset('css/gestionproduit.css') }}" rel="stylesheet"/>
+	<!-- Customs SVG -->
+	<link href="{{ asset('images/icones/plus.svg') }}" rel="stylesheet"/>
+	<!-- Include AOS stylesheet -->
+	<link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
+	<!-- Inclure les liens vers les icônes Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+        <script src="{{asset('js/deletemodal.js')}}"> </script>
+		<script src="{{asset('js/dropdown.js')}}"> </script>
+{% endblock %}
+
+{% block body %}
+	<div class="container py-2">
+		<!--Barre de recherche-->
+			<div class="d-flex flex-column align-items-center justify-content-center my-4">
+				<form class="py-4 w-100"  id='recherche' style="width: 40%;" action="{{ path('admin-search') }}" method="get">
+					<div class="input-group">
+						<input class="form-control bg-primary text-white px-3 text-center" type="text" placeholder="Minecraft, Carte playstation, RPG..." name="search-input" />
+
+						<a onclick="effacerFormulaire()"><div class="input-group-prepend">
+							<span id="backspace-btn" class="input-group-text bg-primary rounded-right">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-backspace-fill" viewBox="0 0 16 16"><path d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"/>
+							</span>
+						</div></a>
+						<script>
+							function effacerFormulaire() {
+							document.getElementById("recherche").reset();
+							}
+						</script>
+					</div>
+				</form>
+				<div class="d-flex px-4 align-items-center">
+					<div class="dropdown">
+					<button class="btn btn-primary fs-bold fs-5 px-5 dropdown-toggle" style="text-transform:none;border-radius:50px; height:50px; "type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						<span id="dropdownText">Trier par</span>
+					</button>
+					<ul class="dropdown-menu fs-5" style="border-radius:15px; background-color:#272727;"aria-labelledby="dropdownMenuButton1">
+											<li><a id="priceAscendingOption" class="dropdown-item text-white" href="{{path('admin-search-by-price-asc')}}?sort=asc" onclick="setDropdownText('Prix ( croissant )')">Prix ( croissant )</a></li>
+						<li><a id="priceDescendingOption" class="dropdown-item text-white" href="{{path('admin-search-by-price-desc')}}?sort=desc" onclick="setDropdownText('Prix ( décroissant )')">Prix ( décroissant )</a></li>
+						<li><a id="likeAscendingOption" class="dropdown-item text-white" href="{{path('admin-search-by-likes-asc')}}?sort=likeasc" onclick="setDropdownText('Nombre de likes ( croissant )')">Nombre de likes ( croissant )</a></li>
+						<li><a id="likeDescendingOption" class="dropdown-item text-white" href="{{path('admin-search-by-likes-desc')}}?sort=likedesc" onclick="setDropdownText('Nombre de likes ( décroissant )')">Nombre de likes ( décroissant )</a></li>
+					</ul>
+					</div>
+				</div>
+			</div>
+		<!---->
+
+		<!--La card d'ajout de produit-->	
+			<div class="row justify-content-left">
+				<div class="col-md-4 py-2">
+					<a href="{{path('ajoutproduit')}}">
+						<div class="card p-2" style="height: 96%;">
+							<img class="card-img-top img-fluid py-2" src="images/icones/plus-white.svg" alt="Icône"  style="height: 300px; object-fit: cover;"></img>
+							<div class="card-footer justify-content-center" style="border-top: 7px solid black;">
+								<p class="fs-3 pt-5 text-white fw-bold text-center" style="font-family: Comic Sans MS;">Ajouter un produit
+							</div>
+						</div>
+					</a>
+				</div>
+		<!---->
+
+		<!--Les cards des produits likés -->
+			{% for produit in produits %}
+					<div class="col-md-4 py-2 justify-content-center">
+						<div class="card p-2" style="max-height:500px;">
+							<!--Cercle bleu-->
+								<div style="position: absolute; top:0px; right: 0px; display: flex; justify-content: center; align-items: center; width: 60px; height: 60px; border-radius: 45%; background-color: blue;">
+									<a href="{{path('modifierleproduit', {'id': produit.id, 'designation': produit.designation})}}">
+										<!--Icone crayon-->
+										<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M14.078 4.232l-12.64 12.639-1.438 7.129 7.127-1.438 12.641-12.64-5.69-5.69zm-10.369 14.893l-.85-.85 11.141-11.125.849.849-11.14 11.126zm2.008 2.008l-.85-.85 11.141-11.125.85.85-11.141 11.125zm18.283-15.444l-2.816 2.818-5.691-5.691 2.816-2.816 5.691 5.689z"/></svg>
+									</a>
+								</div>
+								
+							<img class="card-img-top img-fluid" src="images/produits/{{produit.image}}" alt="{{ produit.designation }}" style="height: 300px; object-fit: cover;">
+							<div class="card-body d-flex pb-2">
+								<h4 class="card-title text-white text-decoration-none" style="font-family:Comic Sans MS; font-size:18px; text-transform:none;">{{ produit.designation }}</h4>
+								<h4 class="text-white ms-auto pt-1 fs-5" style="font-family:Comic Sans MS; ">{{ produit.prix }}€<h4><br>
+							</div>	
+							<div class="justify-content-center d-flex">		
+								<h4 class="card-title fs-6 mx-3 text-white text-decoration-none pt-2" style="text-transform:none; font-weight:bold;">Nombre de likes :</h4>
+								<h4 class="text-white ms-auto mx-2 fs-5" style="font-family:Comic Sans MS;">{{ produit.nblikes }}<img src="images/icones/coeurplein.svg" style="width:30px; height:30px;"></h4>
+							</div>	
+							<div class="card-footer justify-content-center">
+								<a class="btn1 text-decoration-none deletee" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdro" data-numproduit="{{ produit.id }}" data-nomproduit="{{ produit.designation }}"><div class="py-3 text-center">Supprimer le produit</div></a>
+							</div>
+						</div>
+					</div>
+			{% endfor %}
+		</div>
+		<!---->
+	</div>
+
+{% endblock %}

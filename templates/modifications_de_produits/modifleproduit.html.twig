@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}Modifier {{ produit.designation }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('css/modifleproduit.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+        <script src="{{asset('js/replaceimage.js')}}"> </script>
+{% endblock %}
+
+{% block body %}
+    {% if form_errors(form) is not empty %}
+        <!--Message en bannière-->
+            <div class="banner-container" style="background-color: #353535;">
+                <div class="banner-text fs-1 text-center">{{ form_errors(form) }}</div>
+            </div>
+        <!---->
+    {% endif %}
+
+    <div class="back-cross">
+        <a href="{{path('gestiondesproduits')}}"> 
+            <img clas="cross" src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/white-cross.svg">
+        </a>
+    </div>
+
+    <div class="row justify-content-center pt-5" style="margin-bottom:100px;">
+            <div class="col-md-5">
+                <div class="card p-2 w-100" id="card">
+                    <div class="card-body py-2">
+                    {{ form_start(form, {'attr': {'id': 'my-form-id'}}) }}
+                            <div class="row d-flex justify-content-center text-white fw-bold fs-1 py-3" style="font-family: 'Comis S', sans-serif;">Modifier la photo</div>
+                                <div class="row d-flex justify-content-center text-white fw-bold fs-2">
+                                    <div class="row d-flex justify-content-center text-white fw-bold fs-2">   
+                                        {% if form.image.vars.value is not empty %}
+                                            <img id="imagePreview" src="{{ asset('images/produits/'~form.image.vars.value) }}" style="width:100%;">
+                                        {% else %}
+                                        {{ form_widget(form.image, {'label': '', 'attr': {'class': 'd-none'}}) }}
+                                        <label for="{{ form.image.vars.id }}" class="btnajout d-flex justify-content-center" style="width:80%; border-radius: 10px;">
+                                            <img class="pb-4" id="imagePreview" src="/jeux/public/images/produits/{{produit.image}}" style="border: none; height: 100%; width:100%; object-fit: cover;">
+                                        </label>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            <div class="py-2">
+                            {{ form_row(form.designation) }}    
+                            </div>
+                            
+                            <div class="py-2">
+                            {{ form_row(form.prix) }}
+                            </div>
+
+                            <div class="py-2">
+                                {{ form_row(form.description, {'attr': {'id': 'description', 'style': 'height: 150px;' }}) }}
+                            </div>
+
+                            <div class="row d-flex justify-content-start pt-4 pb-3">
+                                <div class="px-4">
+                                    <label for="plateformes" class="fw-bold text-white rounded-input pb-3">Plateformes du produit</label>
+                                    <div class="pb-5">
+                                        <div class="dropdown">
+                                        <button class="btn btn-secondary py-2 text-white w-100 bg-primary dropdown-toggle" type="button" style="border-radius:10px;" id="plateformesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Sélectionner les plateformes
+                                        </button>
+                                            <ul class="dropdown-menu customedropdown w-100 px-5" style="border-radius:10px;" aria-labelledby="plateformesDropdown">
+                                                <div class="row justify-content-center">
+                                                    <div class="col-5">
+                                                        {% for plateforme in form.plateformes[:2] %}
+                                                            <li>
+                                                                <label class="form-check">
+                                                                    {{ form_widget(plateforme, {'attr': {'class': 'text form-check-input'}}) }}
+                                                                    <span class="text-white fs-5">{{ plateforme.vars.label }}</span>
+                                                                </label>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </div>
+                                                    <div class="col-5">
+                                                        {% for plateforme in form.plateformes[2:] %}
+                                                            <li>
+                                                                <label class="form-check">
+                                                                    {{ form_widget(plateforme, {'attr': {'class': 'text form-check-input'}}) }}
+                                                                    <span class="text-white fs-5">{{ plateforme.vars.label }}</span>
+                                                                </label>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="card-footer justify-content-center py-2">
+                                {{ form_row(form.confirmer, {'attr': { 'class': 'btn btn-confirmer w-100 py-3','style': 'border-radius: 10px'}}) }}
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="row pt-5"></div>
+    
+{% endblock %}

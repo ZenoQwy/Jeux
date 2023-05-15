@@ -1,0 +1,107 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-out; 
+    border-radius: 5px;
+    background: linear-gradient(to top right, #000000, #0000FF);
+    margin-bottom: 1rem;
+    border-radius: 15px;
+}
+
+
+.container {
+    width: auto;
+    margin: 0 auto;
+    background-color: #272727;
+    justify-content: space-between;
+    list-style: none;
+}
+
+
+.banner-container {
+    background-color: #353535;
+    padding: 20px;
+    text-align:center;
+    list-style-type: none !important;
+}
+
+.banner-text {
+    color: red;
+    text-align: start;
+    font-size: 25px;
+    font-weight: bold;
+    list-style-type: none !important;
+}
+
+.form-control {
+    background-color: #272727;
+    color: white;
+    border-color: #272727;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+  
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.picture{
+  transition: all 0.3s ease-out;
+  border-radius: 10px;
+}
+.picture:hover {
+  transform: scale(1.10);
+}
+
+/* le bouton confirmer la modif */
+.btn{
+  width: 95%;
+}
+
+.btn:hover {
+  background-color: blue !important;
+}
+
+.btnajout:hover {
+  transform: scale(1.10);
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+#preview img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  object-fit: cover;
+}
+
+.hidden {
+  display: none;
+}
+
+.form-error-message {
+  list-style: none;
+}
+
+.rounded-input {
+  border-radius: 15px !important;
+}
+
+
+.back-cross {
+  position: absolute;
+  top: 120px;
+  right: 20px;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  opacity: 0.5;
+  border-width: 100px;
+}
+
+.back-cross:hover{
+  transform: scale(1.15);
+}
+
+.customedropdown{
+  background-color: #272727 !important;
+}

@@ -1,0 +1,81 @@
+.banner {
+    overflow: hidden;
+    position: relative;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+  }
+  
+  @media (min-width: 768px) {
+    .banner img {
+      clip-path: polygon(0 0, 100% 0, 100% 95%, 0 80%);
+    }
+  }
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.banner-container {
+    background-color: #353535;
+    padding: 20px;
+    text-align:center;
+}
+
+.banner-text {
+    color: #fff !important;
+}
+
+.avis-container{
+    background-color: #353535;
+}
+  .carousel{
+    width: 90%;
+
+  }
+
+.carousel-img {
+    max-height: 700px;
+    width: 100% !important;
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+background-color: rgb(54, 54, 54);
+padding: 5px;
+opacity: 0.2;
+width: 50px;
+}
+
+
+.custom-card {
+    background-image: linear-gradient(to bottom right, #000000, #0000a7)!important;
+    width: 100%;
+}
+
+  
+@media (max-width: 1000px) {
+  .carousel{
+    width: 100%;
+
+  }
+
+  .custom-card{
+    width: 75% !important;
+
+  }
+}
+  
+
+
+
+
+

@@ -1,0 +1,36 @@
+
+    
+.form-control {
+border-radius: 10px;
+}
+
+.banner-container {
+    background-color: #353535;
+    padding: 20px;
+    text-align:center;
+  }
+  
+  
+  .banner-text {
+    color: #fff;
+  }
+
+  .btn:hover{
+    background-color: blue !important;
+  }
+
+
+  .custom-card {
+    background-image: linear-gradient(to bottom right, #000000, #0000a7)!important;
+}
+
+
+.card{
+  width: 50%;
+}
+
+@media (max-width: 767px) {
+  .card{
+    width: 90%;
+  }
+}

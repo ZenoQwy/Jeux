@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Votre compte{% endblock %}
+
+	{% block stylesheets %}
+		<!-- Bootstrap CSS -->
+		<link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="{{ asset('css/acceuil.css') }}" rel="stylesheet">
+    <!-- Include AOS stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
+    	<!-- Custom CSS -->
+		<link href="{{ asset('css/compte.css') }}" rel="stylesheet">
+	{% endblock %}
+
+{% block body %}
+	<!--Message en bannière-->
+		<div class="banner-container py-4">
+			<div class="text-white banner-text fs-1">Bonjour {{ app.user.prenom|capitalize }} !</div>
+		</div>
+	<!---->
+  <div style="margin-bottom:100px;">
+    <div class="row py-4"></div>
+      <div class="row py-5 d-flex justify-content-start">
+        <div class="col-8 d-flex justify-content-center">
+          <div class="row">
+            <div class="fs-2 pb-3 fw-bold text-white">Vos informations</div><br>
+            <hr>
+            <div class="fs-5 pt-3 pb-5" style="color:#808080;">
+              <div class='text-white pb-2' style="text-transform:none;">Nom : <a class="fs-5 text-decoration-none" style="color:#909090;">{{app.user.nom|capitalize}}</a></div>
+              <div class='text-white pt-2 pb-2' style="text-transform:none;">Prenom :  <a class="fs-5 text-decoration-none" style="color:#909090;">{{app.user.prenom|capitalize}}</a></div>
+              <div class='text-white pt-2 pb-2' style="text-transform:none;">Email :  <a class="fs-5 text-decoration-none" style="color:#909090;">{{app.user.email}}</a></div>
+              <div class='text-white pt-2 pb-2' style="text-transform:none;">Numéro :  <a class="fs-5 text-decoration-none" style="color:#909090;">{{app.user.numero}}</a></div>
+              <div class='text-white pt-2 pb-2' style="text-transform:none;">Date de naissance : <a class="fs-5 text-decoration-none" style="color:#909090;">{{ app.user.DateDeNaissance|date('d/m/Y') }}</a></div>
+            </div>
+          </div>
+        </div>
+          <div class="col-4">
+              {% if 'ROLE_ADMIN' in app.user.roles %}
+                  <div class="fs-2 fw-bold text-white">Vos fonctions d'administrateur</div><br>
+                  <div class="row">
+                    <div class="col py-3 px-5">
+                      <img src="images/icones/tools.svg" style="width:50px; heigth:50px;">
+                      <a class="message text-white px-2 fs-4" href="{{path('gestiondesproduits')}}">Gestion du site</a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col py-3 px-5">
+                      <img src="images/icones/mail-blue.svg" style="width:50px; heigth:50px;">
+                      <a class="message text-white px-2 fs-4" href="{{path('adminmessagerie')}}">Messagerie support</a>
+                    </div>
+                  </div>
+                  
+              {% else %}
+                      <img class='pt-5'src="images/logo/instantreboot.png" style="width:500px; heigth:500px;">
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

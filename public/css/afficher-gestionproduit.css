@@ -1,0 +1,133 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-out; 
+    border-radius: 5px;
+    background: linear-gradient(to top right, #000000, #0000FF);
+    margin-bottom: 1rem;
+    border-radius: 15px;
+}
+
+.container {
+    width: auto;
+    height: 80vh; 
+    margin: 0 auto;
+    background-color: #272727;
+    justify-content: space-between;
+}
+
+.btn1 {
+    display: block;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.btn1:hover {
+  background-color: red;
+}
+
+.banner-container {
+    background-color: #353535;
+    padding: 20px;
+    text-align:center;
+}
+
+
+.banner-text {
+    color: #fff;
+}
+
+.form-control {
+    background-color: #272727;
+    color: white;
+    border-color: #272727;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+  
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: white;
+  border-color: white;
+}
+
+.btn-secondary:hover {
+  background-color: white;
+  color: #272727;
+}
+
+
+/* Style pour la barre de recherche */
+.input-group {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.input-group-text {
+  color: white;
+  border-right: none;
+}
+
+.input-group-text1 {
+  color: white;
+  border-left: none;
+}
+
+.input-group-text svg {
+  margin-right: -1px;
+}
+
+.input-group-text1 svg {
+  margin-left: -1px;
+}
+
+.btn-outline-secondary {
+  background-color: white;
+  color: #007bff;
+  border: none;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.rounded-left {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-right: 1px solid;
+  border-right-color: gray;
+}
+
+
+.rounded-right {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-left: 1px solid;
+  border-left-color: gray;
+}
+
+.back-cross {
+  position: absolute;
+  top: 120px;
+  right: 20px;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  opacity: 0.5;
+  border-width: 100px;
+}
+
+.back-cross:hover{
+  transform: scale(1.15);
+}
+
+

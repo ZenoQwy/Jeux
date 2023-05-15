@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}}Support
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- Customs CSS -->
+    <link href="{{ asset('css/support.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block body %}
+	<!--Message en bannière-->
+		<div class="banner-container" data-aos="fade-in" data-aos-delay="500">
+			<div class="text-white banner-text fs-1">Voici la requête du client / de la cliente suivant(e) : </div>
+		</div>
+	<!---->
+
+    <div class="d-flex align-items-center justify-content-center" style="margin-bottom:100px; margin-top:50px;">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h2 class="card-title" style="text-transform:none;">De : <span style="color:blue;">{{ lemessage.email }}</span></h2>
+                <hr class="mt-3 mb-4 mx-0" style="width: 100%;">
+
+                <h2 class="pb-3"style="text-transform:none;">Informations complémentaires :</span></h2>
+                <h4 class="px-4 pb-1" style="text-transform:none;">Nom : <span style="color:blue;">{{ user.nom|capitalize }}</span></h4>
+                <h4 class="px-4 pb-1" style="text-transform:none;">Prenom : <span style="color:blue;">{{ user.prenom|capitalize }}</span></h4>
+                <h4 class="px-4 pb-1" style="text-transform:none;">Numéro : <span style="color:blue;">{{ user.numero }}</span></h4>
+                <h4 class="px-4 pb-3" style="text-transform:none;">Date de naissance : <span style="color:blue;">{{ user.datedenaissance|date('d/m/Y') }}</span></h4>
+                <hr class="mt-3 mb-4 mx-0" style="width: 100%;">
+
+                <h2 class="pb-4" style="text-transform:none;">Objet : <span style="color:blue;">{{ lemessage.objet }}</span></h2>
+                <h3 class="pb-1" style="text-transform:none;">Message : </h3>
+                <div class="card-text p-2" style="border-radius:10px; background-color:#272727;:solid 1px white;">    
+                    <h4 class='p-2'style="text-transform:none;"><span style="color:blue;">{{ lemessage.message }}</span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

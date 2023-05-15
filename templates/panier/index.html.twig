@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Panier{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<!-- Customs CSS -->
+	<link href="{{ asset('css/panier.css') }}" rel="stylesheet"/>
+	<!-- Include AOS stylesheet -->
+	<link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
+	<!-- Inclure les liens vers les icônes Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+{% endblock %}
+
+{% block body %}
+
+<div style='margin-bottom:280px;'>
+  <div class="container-fluid pb-5 py-4">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-8 px-3">
+            {% if app.user.panier is null or app.user.panier.ajouters is empty %}
+              <div class="text-white pb-3 fs-3 fw-bold">Votre panier</div>
+              <div class="ligne shadow-lg rounded-3" style="background-color:#404040;">
+                <ul class="list-group list-group-flush">
+                  <div class="grosmess text-center fw-bold mb-2 fs-2" style="color:blue;"><div>Vous n'avez aucun produit dans votre panier.</div></div>
+                  <div class="ptitmess fs-4 text-center text-black fw-bold pt-2 pb-2"><div>Si vous souhaitez en ajouter, <br>veuillez vous rendre sur notre page des produits</div></div>
+                  <div class="pt-3 d-flex justify-content-center fw-bold"><a href='{{path('index')}}'class="btn btn-success py-4" style=" border-radius:20px;">Consulter les produits ➔</a></div>
+                </ul>
+            {% else %}
+              <div class="text-white pb-3 fs-3 fw-bold">Votre panier</div>
+                <div class="ligne shadow-lg rounded-3" style="background-color:#171717;">
+                  <ul class="list-group list-group-flush">
+                    {% for a in app.user.panier.ajouters %}
+                      {% if loop.first %}
+                        <div class="px-2 pt-3 pb-2">
+                          <div class="ligne shadow-lg rounded-3" style="background-color:#353535;">
+                            <div class="px-3 infostitre text-white fw-bold" style="font-family: Lucida;">
+                              <img class="joyctick me-2" src="images/icones/manette.svg">
+                              {{ a.produits.designation }}
+                              <a href="{{path('suppanier', {'id': a.id})}}"><img class="poubelle pt-1 px-1" src="images/icones/poubelle.svg" style="float: right;"></a> 
+                            </div>
+                            <hr class="my-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <div class="items-container w-100 d-flex align-items-center">
+                                <div class="informations w-100">
+                                  <div class="infostext text-white fw-bold mb-2" style="font-family: Comic Sans MS;">
+                                    <div class="pt-2"> 
+                                      <img class="joyctick me-2" src="images/icones/boxs.svg">Quantité: {{ a.qte }}
+                                      <a href="{{ path('supp1dupanier', {'id': a.produits.id}) }}"><img class="produit" src="images/icones/produit-.svg"></a>
+                                      <a href="{{ path('ajoutpanier', {'id': a.produits.id}) }}"><img class="produit" src="images/icones/produit+.svg"></a>
+                                    </div>
+                                    <div class="infostext text-white fw-bold pt-3" style="font-family: Comic Sans MS;">
+                                      <img class="joyctick me-2" src="images/icones/billet.svg">Prix : {{ a.produits.prix }} €
+                                    </div>
+                                  </div>
+                                </div>
+                                <img class="imgg ms-auto" src="images/produits/{{a.produits.image}}" alt="{{ a.produits.designation }}">
+                              </div>
+                            </li>
+                          </div>
+                        </div>
+                      {% else %}
+                        {% if loop.last %}
+                          <div class="pb-3 px-2 pt-2">
+                            <div class="ligne shadow-lg rounded-3" style="background-color:#353535;">
+                              <div class="px-3 infostitre text-white fw-bold" style="font-family: Lucida;">
+                                <img class="joyctick me-2" src="images/icones/manette.svg">
+                                {{ a.produits.designation }}
+                                <a href="{{path('suppanier', {'id': a.id})}}"><img class="poubelle  pt-1 px-1" src="images/icones/poubelle.svg" style="float: right;"></a> 
+                              </div>
+                              <hr class="my-3">
+                              <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="items-container w-100 d-flex align-items-center">
+                                  <div class="informations w-100">
+                                    <div class="infostext text-white fw-bold mb-2" style="font-family: Comic Sans MS;">
+                                      <div class="pt-2"> 
+                                        <img class="joyctick me-2" src="images/icones/boxs.svg">Quantité: {{ a.qte }}
+                                        <a href="{{ path('supp1dupanier', {'id': a.produits.id}) }}"><img class="produit" src="images/icones/produit-.svg"></a>
+                                        <a href="{{ path('ajoutpanier', {'id': a.produits.id}) }}"><img class="produit" src="images/icones/produit+.svg"></a>
+                                      </div>
+                                      <div class="infostext text-white fw-bold pt-3" style="font-family: Comic Sans MS;">
+                                        <img class="joyctick me-2" src="images/icones/billet.svg">Prix : {{ a.produits.prix }} €
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <img class="imgg ms-auto" src="images/produits/{{a.produits.image}}" alt="{{ a.produits.designation }}">
+                                </div>
+                              </li>
+                            </div>
+                          </div>
+                        {% else %}
+                          <div class="px-2 py-3">
+                            <div class="ligne shadow-lg rounded-3" style="background-color:#353535;">
+                              <div class="px-3 infostitre text-white fw-bold" style="font-family: Lucida;">
+                                <img class="joyctick me-2" src="images/icones/manette.svg">
+                                {{ a.produits.designation }}
+                                <a href="{{path('suppanier', {'id': a.id})}}"><img class="poubelle  pt-1 px-1" src="images/icones/poubelle.svg" style="float: right;"></a> 
+                              </div>
+                              <hr class="my-3">
+                              <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="items-container w-100 d-flex align-items-center">
+                                  <div class="informations w-100">
+                                    <div class="infostext text-white fw-bold mb-2" style="font-family: Comic Sans MS;">
+                                      <div class="pt-2"> 
+                                        <img class="joyctick me-2" src="images/icones/boxs.svg">Quantité: {{ a.qte }}
+                                        <a href="{{ path('supp1dupanier', {'id': a.produits.id}) }}"><img class="produit" src="images/icones/produit-.svg"></a>
+                                        <a href="{{ path('ajoutpanier', {'id': a.produits.id}) }}"><img class="produit" src="images/icones/produit+.svg"></a>
+                                      </div>
+                                      <div class="infostext text-white fw-bold pt-3" style="font-family: Comic Sans MS;">
+                                        <img class="joyctick me-2" src="images/icones/billet.svg">Prix : {{ a.produits.prix }} €
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <img class="imgg ms-auto" src="images/produits/{{a.produits.image}}" alt="{{ a.produits.designation }}">
+                                </div>
+                              </li>
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+            
+          {% set prixTotal = 0 %}
+          {% if app.user.panier is not null %}
+            {% for a in app.user.panier.ajouters %}
+              {% set prixTotal = prixTotal + a.produits.prix * a.qte %}
+            {% endfor %}
+          {% endif %}
+
+          {% set nbProduitsPanier = 0 %}
+          {% if app.user.panier is not null %}
+            {% for produits in app.user.panier.ajouters %}
+              {% set nbProduitsPanier = nbProduitsPanier + produits.getQte() %}
+            {% endfor %}
+          {% endif %}
+
+          <div class="commande col-md-4 px-3">
+            <div class="text-white pb-3 fs-3 fw-bold">Votre commande</div>
+              <div class="ligne shadow-lg rounded-3 p-4" style="background-color:#404040;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="fs-5 text-white fw-bold mb-2">Prix total :</div>
+                  <div class="fs-5 text-white fw-bold mb-2">{{ prixTotal }}€</div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="fs-5 text-white fw-bold mb-2">Total des produits</div>
+                  <div class="fs-5 text-white fw-bold mb-2" style="color: var(--color-light);">{{ nbProduitsPanier }}</div>
+                </div>
+                {% if nbProduitsPanier == 0 %}
+                  <hr style="height:2px;">
+                  <div class="btn-transparant text-center w-100 py-3 text-white fw-bold mt-2">Passer au paiement <img class="pb-1"src="images/icones/rigth-arrow.svg"></div>
+                {% else %}
+                  <a href="{{path('index')}}"><div class="btn btn-success w-100 py-3 mt-2">Passer au paiement <img class="pb-1"src="images/icones/rigth-arrow.svg"></div></a>
+                  <hr style="height:2px;">
+                  <a href="{{path('index')}}"><div class="btn btn-success w-100 py-3"><img class="pb-1"src="images/icones/left-arrow.svg"> Continuer les achats</div></a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+ </div> 
+</div>
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Mentions légales{% endblock %}
+
+	{% block stylesheets %}
+		<!-- Bootstrap CSS -->
+		<link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="{{ asset('css/acceuil.css') }}" rel="stylesheet">
+        <!-- Include AOS stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
+	{% endblock %}
+
+{% block body %}
+
+  <div class="pb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-6 d-flex justify-content-center">
+          <div class="row">
+            <div class=" h2 text-center pt-5 fw-bold text-white">Mentions légales</div><br>
+            <div class="fs-4 pt-3 pb-5" style="color:#808080;">
+                Le site Instant Reboot est édité par JUSTIN Thomas, domicilié à Regnauville, et est géré en tant que site personnel.
+                Le directeur de la publication est Mr JUSTIN Thomas, en qualité de propriétaire du site.
+                Le site Instant Reboot est hébergé par OVH au 2 rue Kellermann – BP 80157 59053 ROUBAIX CEDEX 1 et adresse de l'hébergeur.
+                Pour toute question ou réclamation concernant le site Instant Reboot ou son contenu, vous pouvez contacter Mr JUSTIN Thomas à l'adresse e-mail suivante : tomdu950@gmail.com.
+                
+                
+                <h4 class='text-white pt-5 pb-2' style="text-transform:none;">Propriété intellectuelle</h4>
+                L'ensemble du contenu du site Instant Reboot, incluant de manière non limitative les textes, graphismes, images, logos, vidéos, noms de domaine et tout autre élément constitutif du site, est la propriété exclusive de JUSTIN Thomas ou de ses partenaires et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.
+
+                Toute reproduction, représentation, modification, publication, transmission, dénaturation, totale ou partielle du site ou de son contenu, par quelque procédé que ce soit, et sur quelque support que ce soit est interdite, sauf autorisation préalable et écrite de [votre nom].
+
+                <h4 class='text-white pt-5 pb-2' style="text-transform:none;">Protection des données personnelles</h4>
+
+                Le site Instant Reboot peut être amené à collecter des données personnelles concernant ses utilisateurs. Ces données sont collectées dans le respect de la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés.
+
+                Les utilisateurs disposent d'un droit d'accès, de rectification et de suppression des données les concernant, qu'ils peuvent exercer en contactant Mr JUSTIN Thomas.
+
+                <h4 class='text-white pt-5 pb-2' style="text-transform:none;">Cookies</h4>
+
+                Le site Instant Reboot peut être amené à utiliser des cookies. Ces cookies ont pour but de faciliter la navigation sur le site et de mesurer l'audience du site.
+
+                Les utilisateurs peuvent refuser l'utilisation de cookies en configurant leur navigateur en conséquence.
+
+                <h4 class='text-white pt-5 pb-2' style="text-transform:none;">Loi applicable et juridiction compétente</h4>
+
+                Les présentes mentions légales sont soumises à la loi française. Tout litige relatif à l'utilisation du site Instant Reboot sera soumis à la compétence exclusive des tribunaux français.
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

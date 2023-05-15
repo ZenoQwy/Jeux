@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}}Avis
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- Customs CSS -->
+    <link href="{{ asset('css/avis.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <!--Message en bannière-->
+        <div class="banner-container">
+            <div class="text-white banner-text fs-1">Votre avis compte beaucoup pour nous.</div>
+        </div>
+
+        <div class="banner-container">
+            <div class="text-white banner-text fs-5">C'est ici que vous pouvez donc noter notre site et ses services grâce aux ⭐️.<br>N'oubliez pas d'ajouter un commentaire constructif afin de mieux comprendre votre choix 🙂</div>
+        </div>
+    <!---->
+
+    <div class="px-2 d-flex align-items-center justify-content-center py-5">
+        <div class="card p-3 rounded-3 bg-primary text-white">
+            <div class="card-body ">
+            <h4 class="card-title text-center h1" style="text-transform:none;">Laisser un avis</h4>
+            {{ form_start(formavis) }}
+                {{ form_errors(formavis) }}
+                {{ form_row(formavis.note, {'attr': {'class': 'form-control bg-dark rounded-3 mb-3'}}) }}
+                {{ form_row(formavis.commentaire, {'attr': {'class': 'form-control text-white bg-dark rounded-3 mb-5', 'placeholder': 'Saisissez un commentaire ...'}}) }}
+                {{ form_row(formavis.envoyer, {'attr': {'class': 'btn  py-3 text-white form-control bg-dark rounded-3 mb-3', 'placeholder': 'Commentaire'}}) }}
+            {{ form_end(formavis) }}
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

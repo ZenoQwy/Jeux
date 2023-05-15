@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}Ajout d'un produit
+{% endblock %}
+
+{% block stylesheets %}
+	<!-- Customs CSS -->
+	<link href="{{ asset('css/ajoutproduit.css') }}" rel="stylesheet"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+        <script src="{{asset('js/replaceimage.js')}}"> </script>
+{% endblock %}
+
+{% block body %}
+    {% if form_errors(ajout) is not empty %}
+        <!--Message en bannière-->
+        <div class="banner-container" style="background-color: #353535;">
+            <div class="fs-1 banner-text text-center">{{ form_errors(ajout) }}</div>
+        </div>
+        <!---->
+    {% endif %}
+    
+    <div class="back-cross">
+        <a href="{{path('gestiondesproduits')}}"> 
+            <img clas="cross" src="images/icones/white-cross.svg">
+        </a>
+    </div>
+
+
+	<div class="container py-4">
+		<div class="row justify-content-center">
+            <div class="col-md-7 py-3">
+                <div class="card p-2">	
+                   {{ form_start(ajout, {'attr': {'id': 'my-form-id'}}) }}
+                        <div class="row d-flex justify-content-center text-white fw-bold fs-1 py-3" style="font-family: 'Comis S', sans-serif;">Ajouter une photo</div>
+                            <div class="row d-flex justify-content-center text-white fw-bold fs-2">
+                                <div class="row d-flex justify-content-center text-white fw-bold fs-2">   
+                                    {% if ajout.image.vars.value is not empty %}
+                                        <img id="imagePreview" src="http://s3-4676.nuage-peda.fr/jeux/public/images/produits/'~ajout.image.vars.value" style="width:100%;">
+                                    {% else %}
+                                    {{ form_widget(ajout.image, {'label': '', 'attr': {'class': 'd-none'}}) }}
+                                    <label for="{{ ajout.image.vars.id }}" class="btnajout d-flex justify-content-center" style="width:80%; border-radius: 10px;">
+                                        <img id="imagePreview" src="images/icones/plus-black.svg" style="border: none; height: 200px; width:200px; object-fit: cover;">
+                                    </label>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        <hr>
+                        <div class="row d-flex justify-content-start">
+                            <div class="px-4">
+                                <label for="designation" class="fw-bold text-white rounded-input">Désignation du produit</label>
+                                <div class="py-2"name="designation">{{ form_widget(ajout.designation, {'attr': {'class': 'form-control customedropdown text-white fw-bold ', 'style': 'border-radius: 25px;', 'placeholder': 'Minecraft'}}) }}</div>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-start pt-3">
+                            <div class="px-4">
+                                <label for="prix" class="fw-bold text-white rounded-input">Prix du produit</label>
+                                <div class="py-2"name="prix">{{ form_widget(ajout.prix, {'attr': {'class': 'form-control customedropdown text-white fw-bold', 'style': 'border-radius: 25px;', 'placeholder': '9.99'}}) }}</div>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-start pt-3">
+                            <div class="px-4">
+                                <label for="description" class="fw-bold text-white rounded-input">Description du produit</label>
+                                <div class="py-2"name="description">{{ form_widget(ajout.description, {'attr': {'class': 'form-control customedropdown text-white fw-bold', 'style': 'height: 150px; border-radius: 25px;', 'placeholder': 'Minecraft est un jeu de type bac-à-sable aux graphismes simplistes donnant la possibilités aux joueurs de créer ce que bon leur semble avec pour seule limite, leur imagination !'}}) }}</div>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-start pt-4 pb-3">
+                            <div class="px-4">
+                                <label for="plateformes" class="fw-bold text-white rounded-input pb-3">Plateformes du produit</label>
+                                <div class="pb-5">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary text-white w-100 customedropdown dropdown-toggle" type="button" style="border-radius:10px;" id="plateformesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Sélectionner les plateformes
+                                        </button>
+                                        <ul class="dropdown-menu customedropdown w-100 px-5" style="border-radius:10px;" aria-labelledby="plateformesDropdown">
+                                            <div class="row justify-content-center">
+                                                <div class="col-5">
+                                                    {% for plateforme in ajout.plateformes[:2] %}
+                                                        <li>
+                                                            <label class="form-check">
+                                                                {{ form_widget(plateforme, {'attr': {'class': 'text form-check-input'}}) }}
+                                                                <span class="text-white fs-5">{{ plateforme.vars.label }}</span>
+                                                            </label>
+                                                        </li>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="col-5">
+                                                    {% for plateforme in ajout.plateformes[2:] %}
+                                                        <li>
+                                                            <label class="form-check">
+                                                                {{ form_widget(plateforme, {'attr': {'class': 'text form-check-input'}}) }}
+                                                                <span class="text-white fs-5">{{ plateforme.vars.label }}</span>
+                                                            </label>
+                                                        </li>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row d-flex justify-content-start py-2">
+                            {{ form_row(ajout.ajouter, {'attr': { 'class': 'btn btn-primary','style': 'border-radius: 15px'}}) }}
+                        </div>
+                    {{ form_end(ajout) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pt-5"></div>
+    	
+{% endblock %}
+

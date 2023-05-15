@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}Favoris
+{% endblock %}
+
+{% block stylesheets %}
+	<!-- Bootstrap CSS -->
+	<link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="{{ asset('css/favoris.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+	{% if app.user.favoris|length > 0 %}
+	<!--Message en bannière-->
+		<div class="banner-container" data-aos="fade-in" data-aos-delay="500">
+			<div class="text-white banner-text fs-2" style="font-family:Georgia;"><img src="images/icones/coeurplein.svg" style="width:50px; heigth:50px;"> Voici tous vos produits mis en favoris <img src="images/icones/coeurplein.svg"style="width:50px; heigth:50px;"></div>
+		</div>
+	<!---->
+
+	<div style='margin-bottom:100px;'>
+		<div class="container my-5">
+			<div class="row justify-content-center py-5">
+				{% for fav in app.user.favoris %}
+					<div class="col-md-4">
+						<div class="item position-relative">
+							<a href="{{ path('leproduit', {'id': fav.id, 'designation': fav.designation}) }}">
+								<picture>
+									<img class="picture" src="images/produits/{{fav.image}}" style="max-width: 100%;">
+								</picture>
+							</a>
+							<a href="{{ path('ajout|retrait-favoris', {'id': fav.id,'action':'supprimer'}) }}">
+								<img class="remove-icon position-absolute" src="images/icones/black-cross.svg" style="top:-10px; right:-10px"><i class="bi bi-x-circle-fill text-red"></i>
+							</a>
+							<div class="information">
+								<div class="text">
+									<div class="name">
+										<span class="title">{{ fav.designation }}</span>
+									</div>
+								</div>
+								<div class="price" >{{ fav.prix }}€</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+
+	{% else %}
+		<div style='margin-bottom:250px;'>
+			<div class="container pt-5">
+				<div class="row justify-content-center d-flex align-items-center pt-5">
+					<div class="col-md-12 text-center">
+						<img class="img-fluid pt-5" src="images/icones/coeurbrise.svg" alt="Loupe" style=" object-fit: contain;"></img>
+						<div class="fs-4 pt-4 text-white" style="font-family: Comic Sans MS;">Il semblerait que vous n'avait pas de produit mis en favoris <img src="images/icones/coeurvide.svg" style="width:40px; heigth:40px;"></div>
+						<div class="fs-2 pt-5 text-white" style="font-family: Comic Sans MS;">Si vous souhaitez dénicher un produit qui vous plaît et le mettre en favoris <img src="images/icones/coeurplein.svg" style="width:40px; heigth:40px;"><br>nous vous conseillons de vous rendre sur notre ► <a class="vitrine text-white"href="{{ path('index')}}">vitrine des produits</a> ◀︎</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	
+
+{% endblock %}

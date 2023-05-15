@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}}Support
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- Customs CSS -->
+    <link href="{{ asset('css/support.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block body %}
+    <!--Message en bannière-->
+        <div class="banner-container">
+            <div class="text-white banner-text fs-3 py-2">C'est ici que vous pouvez directement contacter notre service client pour touts éventuels problèmes ou demandes.<br> N'hésitez pas à nous fournir le plus d'informations possibles sur la raison de votre requête<br></div>
+        </div>
+    <!---->
+
+    <div class="d-flex align-items-center justify-content-center py-5">
+        <div class="card p-3 rounded-3 bg-primary text-white">
+            <div class="card-body ">
+            <h4 class="card-title text-center py-3 h2" style="text-transform:none;">Communiquez-nous votre problème ou votre demande</h4>
+            {{ form_start(formsupport) }}
+                {{ form_errors(formsupport) }}
+                {{ form_row(formsupport.objet, {'attr': {'class': 'form-control text-white bg-dark rounded-3 mb-3'}}) }}
+                {{ form_row(formsupport.message, {'attr': {'class': 'form-control text-white bg-dark rounded-3 mb-5', 'placeholder': 'Saisissez un message ...'}}) }}
+                {{ form_row(formsupport.envoyer, {'attr': {'class': 'btn py-3 text-white form-control bg-dark rounded-3 mb-3', 'placeholder': 'Commentaire'}}) }}
+            {{ form_end(formsupport) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

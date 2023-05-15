@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}Recherche de produit
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<!-- Customs CSS -->
+	<link href="{{ asset('css/other-search.css') }}" rel="stylesheet"/>
+	<!-- Include AOS stylesheet -->
+	<link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
+	<!-- Inclure les liens vers les icônes Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<!-- Inclure les dépendances CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+        <script src="{{asset('js/dropdown.js')}}"> </script>
+{% endblock %}
+
+{% block body %}
+
+	<!--Message en bannière-->
+		<div class="banner-container">
+			<div class="text-white banner-text h1 pt-3" style="text-transform: none;">Nos produits de la gamme Pc 
+				<span class="px-2">
+					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-pc-display" viewBox="0 0 16 16">
+						<path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V1Zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Zm2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0ZM9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5ZM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5ZM1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2H1.5Z"/>
+					</svg>
+				</span>
+			</div>
+		</div>
+	<!---->
+
+	<div style="margin-bottom:200px;">
+		<div class="container my-4">
+			<!--Barre de recherche-->
+				<div class="d-flex justify-content-center">
+					<form class="py-4"  id='recherche' style="width: 40%;" action="{{ path('search-pc') }}" method="get">
+						<div class="input-group">
+							<input class="form-control bg-primary text-white px-3 text-center" type="text" placeholder="Minecraft, Carte playstation, RPG..." name="search-input" />
+							<a onclick="effacerFormulaire()"><div class="input-group-prepend">
+								<span id="backspace-btn" class="input-group-text bg-primary rounded-right">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-backspace-fill" viewBox="0 0 16 16"><path d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"/>
+								</span>
+							</div></a>
+							<script>
+								function effacerFormulaire() {
+								document.getElementById("recherche").reset();
+								}
+							</script>
+						</div>
+					</form>
+					<div class="d-flex px-4 align-items-center">
+						<div class="d-flex px-4 align-items-center">
+							<div class="dropdown">
+								<button id="dropdownText" class="btn btn-primary fs-bold fs-5 px-5 dropdown-toggle" style="text-transform:none;border-radius:50px; height:50px;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									<span>Trier par</span>
+								</button>
+								<ul class="dropdown-menu fs-5" style="border-radius:15px; background-color:#272727;" aria-labelledby="dropdownMenuButton1">
+									<li>
+										<a id="priceAscendingOption" class="dropdown-item text-white" href="{{path('pc-search-by-price-asc')}}?sort=asc" onclick="setDropdownText('Prix ( croissant )')">Prix ( croissant )</a>
+									</li>
+									<li>
+										<a id="priceDescendingOption" class="dropdown-item text-white" href="{{path('pc-search-by-price-desc')}}?sort=desc" onclick="setDropdownText('Prix ( décroissant )')">Prix ( décroissant )</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!---->
+
+			<div class="row justify-content-start">
+				{% for produit in produits %}
+					<div class="col-md-4 p-0">
+						<div class="item">
+							<a href="{{ path('leproduit', {'id': produit.id, 'designation': produit.designation}) }}">
+								<picture>
+									<img class="picture" src="images/produits/{{produit.image}}" style="max-width: 100%;">
+								</picture>
+							</a>
+							<div class="information">
+								<div class="text">
+									<div class="name">
+										<span class="title">{{ produit.designation }}</span>
+									</div>
+								</div>
+								<div class="price px-2">{{ produit.prix }}€</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

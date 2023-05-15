@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Conditions générales de vente{% endblock %}
+
+	{% block stylesheets %}
+		<!-- Bootstrap CSS -->
+		<link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="{{ asset('css/acceuil.css') }}" rel="stylesheet">
+    <!-- Include AOS stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
+	{% endblock %}
+
+{% block body %}
+  <div class="pb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-6 d-flex justify-content-center">
+          <div class="row">
+            <div class="h2 pb-3 text-center pt-5 fw-bold text-white">Conditions générales de vente</div><br>
+            <div class="fs-4 pt-3 pb-5" style="color:#808080;">
+                  <h4 class='text-white pt-3 pb-2'>Objet</h4>
+                  Les présentes conditions générales de vente ont pour objet de définir les modalités et conditions de vente des produits proposés sur notre site web.
+
+                  <h4 class='text-white pt-5 pb-2'>Produits</h4>
+                  Les produits proposés à la vente sont décrits de manière précise sur notre site web. Nous nous engageons à mettre à jour régulièrement les informations concernant les produits, mais nous ne pouvons garantir que les informations présentées sont toujours exactes et complètes.
+
+                  <h4 class='text-white pt-5 pb-2'>Commandes</h4>
+                  Les commandes passées sur notre site web constituent une offre d'achat ferme de la part du client. Nous nous réservons le droit d'accepter ou de refuser une commande, sans avoir à justifier notre décision.
+
+                  <h4 class='text-white pt-5 pb-2'>Prix et paiement</h4>
+                  Les prix affichés sur notre site web sont exprimés en euros et incluent toutes les taxes applicables. Les frais de livraison sont indiqués séparément. Le paiement doit être effectué au moment de la commande, par carte de crédit ou tout autre moyen de paiement accepté par notre site web.
+
+                  <h4 class='text-white pt-5 pb-2'>Livraisons</h4>
+                  Les produits commandés seront livrés à l'adresse indiquée par le client lors de la commande. Les délais de livraison sont donnés à titre indicatif et ne sont pas garantis. En cas de retard de livraison, nous ne pourrons être tenus responsables des conséquences qui en découlent.
+
+                  <h4 class='text-white pt-5 pb-2'>Garanties et retours</h4>
+                  Nous garantissons que nos produits sont conformes aux descriptions présentées sur notre site web. En cas de non-conformité, nous nous engageons à remplacer le produit ou à rembourser le client. Le client dispose d'un délai de 14 jours pour retourner un produit qui ne lui conviendrait pas, à condition qu'il soit retourné dans son état d'origine.
+
+                  <h4 class='text-white pt-5 pb-2'>Propriété intellectuelle</h4>
+                  Tous les éléments du site web, tels que les textes, les images, les vidéos, les logos, sont protégés par le droit d'auteur et la propriété intellectuelle. Toute reproduction ou utilisation sans autorisation est strictement interdite.
+
+                  <h4 class='text-white pt-5 pb-2'>Confidentialité</h4>
+                  Les données personnelles collectées lors d'une commande sont traitées conformément à notre politique de confidentialité.
+
+                  <h4 class='text-white pt-5 pb-2'>Modification des conditions générales de vente</h4>
+                  Nous nous réservons le droit de modifier les présentes conditions générales de vente à tout moment, sans préavis. Les conditions générales de vente en vigueur au moment de la commande s'appliquent au client.
+                  </div>
+            </div>
+        </div>
+    </div>
+  </div>
+   
+{% endblock %}

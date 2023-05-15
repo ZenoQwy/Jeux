@@ -1,0 +1,2 @@
+File:
+    maxSize: "Le fichier est trop volumineux. La taille maximale autorisée est de {{ limit }} {{ suffix }}."

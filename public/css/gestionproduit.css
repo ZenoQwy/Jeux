@@ -1,0 +1,138 @@
+.dropdown-item:hover {
+  background-color: #343a40;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-out; 
+    border-radius: 5px;
+    background: linear-gradient(to top right, #000000, #0000FF);
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.container {
+    width: auto;
+    margin: 0 auto;
+    background-color: #272727;
+    justify-content: space-between;
+}
+
+.btn1 {
+    display: block;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.btn1:hover {
+  background-color: red;
+}
+
+.banner-container {
+  background-color: #353535;
+  padding: 20px;
+  text-align:center;
+}
+
+
+.banner-text {
+  color: #fff;
+}
+
+.form-control {
+  background-color: #272727;
+  color: white;
+  border-color: #272727;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+  
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* Style pour la barre de recherche */
+.input-group {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.input-group-text {
+  color: white;
+  border-right: none;
+}
+
+.input-group-text1 {
+  color: white;
+  border-left: none;
+}
+
+.input-group-text svg {
+  margin-right: -1px;
+  cursor:pointer;
+}
+
+.input-group-text1 svg {
+  margin-left: -1px;
+}
+
+.rounded-right {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-left: 1px solid;
+  border-left-color: gray;
+}
+
+.modal-dialog {
+  max-width: 610px; /* ajustez la largeur maximale selon vos préférences */
+}
+
+.modal-content {
+  background: linear-gradient(to top right, #000000, #0000FF);
+  font-weight: bold;
+  font-size: 20px;
+  color:white;
+  text-align: center;
+  width: 100%;
+}
+
+.modal-title {
+  font-size: 30px;
+  color:red;
+  font-weight: bold;
+  font-family: 'Impact', sans-serif;
+  text-align: center;
+}
+
+.modal-footer {
+  justify-content: center;
+  display: flex;
+}
+
+.modal-footer a {
+  flex-grow: 1;
+}
+
+.textlien{
+  color:rgb(0, 119, 255);
+  font-size: 30px;
+  font-family: 'Copperplate', sans-serif;
+  display: inline-block;
+}
+
+.textlien:hover{
+  color:white;
+  transform: scale(1.10);
+}
+

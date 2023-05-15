@@ -1,0 +1,105 @@
+.right-half {
+    background: linear-gradient(to bottom right, #000000, #0000FF);
+    height: 100vh;
+    float: left;
+    height: 100vh;
+    align-items: center;
+}
+
+.btn{
+  width: 95%;
+  background-color: #272727 !important;
+}
+
+.btn:hover {
+  background-color: blue !important;
+}
+
+.customedropdown{
+  background-color: #272727 !important;
+}
+
+.banner-container {
+  background-color: #353535;
+  padding: 20px;
+  text-align:center;
+}
+
+.banner-text {
+  color: red;
+  text-align: start;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+.form-control {
+  background-color: #272727 !important;
+  font-weight: bold;
+  border-radius: 15px;
+  color: white !important;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1);
+    transition: 0.3s;
+    border-radius: 5px;
+    background: linear-gradient(to top right, #000000, #0000FF);
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    width: 80%;
+    height: auto; /* définir une hauteur fixe ici */
+    color:white;
+}
+
+#preview img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  object-fit: cover;
+}
+
+.hidden {
+  display: none;
+}
+
+.form-error-message {
+  list-style: none;
+}
+
+.rounded-input {
+  border-radius: 15px !important;
+}
+
+.btn-confirmer{
+  width: 95%;
+  background-color: #272727;
+  text-transform:none;
+  font-size: 20px;
+  color:white;
+}
+
+.btn-confirmer:hover {
+  background-color: rgb(0, 0, 255) !important;
+}
+
+.btnajout:hover {
+  transform: scale(1.10);
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+.back-cross {
+  position: absolute;
+  top: 120px;
+  right: 20px;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  opacity: 0.5;
+  border-width: 100px;
+}
+
+.back-cross:hover{
+  transform: scale(1.15);
+}

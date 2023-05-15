@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% block stylesheets %}
+			<!-- Bootstrap CSS -->
+			<link
+			href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet">
+			<!-- Custom CSS -->
+			<link href="{{ asset('css/register.css') }}" rel="stylesheet">
+		{% endblock %}
+		<title>
+			{% block title %}Instant Reboot • Inscription
+			{% endblock %}
+		</title>
+	</head>
+
+	<body>
+		{% block body %}
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-6 left-half">
+						<a href="{{ path('index') }}"><img class="logo" src="{{asset('images/logo/instantreboot.png')}}" width="100px" alt="Logo"></a>
+						<div class="container d-flex h-100">
+							<div class="col my-auto">
+								<div class="row">
+									{% if form_errors(registrationForm.numero) or form_errors(registrationForm) %}
+										<div class="banner-container">
+											<div class="fs-3 banner-text">{{ form_errors(registrationForm.numero) }}</div>
+										</div>
+									{% else %}
+										{% if form_errors(registrationForm.email) or form_errors(registrationForm) %}
+											<div class="banner-container">
+												<div class="fs-3 banner-text">{{ form_errors(registrationForm.email) }}</div>
+											</div>
+										{% endif %}
+										{% if form_errors(registrationForm.password.first) or form_errors(registrationForm) %}
+											<div class="banner-container">
+												<div class="fs-3 banner-text">{{ form_errors(registrationForm.password.first) }}</div>
+											</div>
+										{% endif %}
+									{% endif %}
+									<div
+										class="col-md-7 mx-auto">
+										<!-- Le formulaire d'inscription -->
+										{{ form_start(registrationForm) }}
+										{{ form_errors(registrationForm) }}
+										<div class="row py-2">
+											{{ form_widget(registrationForm.nom, {'attr': {'class': 'form-control bg-primary text-white', 'placeholder': 'Nom'}}) }}
+										</div>
+										<div class="row py-2">
+											{{ form_widget(registrationForm.prenom, {'attr': {'class': 'form-control bg-primary text-white', 'placeholder': 'Prénom'}}) }}
+										</div>
+										<div class="row py-2">
+											{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control bg-primary text-white', 'placeholder': 'Email'}}) }}
+										</div>
+										<div class="row py-2">
+											{{ form_widget(registrationForm.password.first, {'attr': {'class': 'form-control bg-primary text-white', 'placeholder': 'Mot de passe'}}) }}
+										</div>
+										<div class="row py-2">
+											{{ form_widget(registrationForm.password.second, {'attr': {'class': 'form-control bg-primary text-white', 'placeholder': 'Retapez le mot de passe'}}) }}
+										</div>
+										<div class="row py-2">
+											{{ form_widget(registrationForm.date_de_naissance, {'attr': {'class': 'form-control bg-primary text-white'}, 'placeholder':  {'year': 'Année', 'month': 'Mois', 'day': 'Jour'}}) }}
+										</div>
+
+								<div class="row py-2">
+									{{ form_widget(registrationForm.numero, {'attr': {'class': 'form-control bg-primary text-white', 'placeholder': 'Numéro de téléphone'}}) }}
+								</div>
+								<div class="form-check py-3">
+									{{ form_row(registrationForm.agreeTerms, {
+										'label': "J'accepte les conditions générales de vente et la politique de confidentialité",
+										'label_attr': {'class': 'form-check-label fs-6 text-white'},
+										'attr': {'class': 'form-check-input', 'style': 'background-color: black'},
+										'row_attr': {'class': 'clickable-terms'}
+									}) }}
+									<script>
+										document.addEventListener('DOMContentLoaded', function() {
+											var termsLabel = document.querySelector('.clickable-terms label');
+											var termsText = termsLabel.innerHTML;
+											var termsLink1 = "<a href='{{ path('conditions') }}' style='color: white;'>conditions générales de vente</a>";
+											var termsLink2 = "<a href='{{ path('confidentialite') }}' style='color: white;'>politique de confidentialité</a>";
+
+											termsLabel.innerHTML = termsText.replace('conditions générales de vente', termsLink1)
+												.replace('politique de confidentialité', termsLink2);
+										});
+									</script>
+								</div>
+								<hr>
+								<div class="pt-3">
+									{{ form_row(registrationForm.envoyer, {'attr': { 'class': 'btn btn-primary w-100', 'style': 'border-radius: 10px'}}) }}
+								</div>
+								{{ form_end(registrationForm) }}
+								<div class="row">
+									<div class="pt-2 px-3 text-white fs-6">
+										<a href="{{ path('app_login') }}" class="text-decoration-underline text-white">← Retour</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 right-half"></div>
+		</div>
+	</div>
+	{% endblock %}
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- Bootstrap JavaScript -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
