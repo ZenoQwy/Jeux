@@ -68,7 +68,6 @@ class ModificationsDeProduitsController extends AbstractController
                     try {
                         $fichier->move($this->getParameter('file_directory'), $nomFichier);
                         $produits->setImage($nomFichier);
-                        $produits->setDesignation($designation);
                         $entityManagerInterface->persist($produits);
                         $entityManagerInterface->flush();
                         $this->addFlash('notice','Produit modifié !');
