@@ -16,8 +16,7 @@ class BaseController extends AbstractController
     #[Route('/index', name: 'index')]
     public function index(EntityManagerInterface $entityManagerInterface): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $produits = $entityManager->getRepository(Produit::class)->findAll();
+        $produits = $entityManagerInterface->getRepository(Produit::class)->findAll();
         
         $les5produits = [];
         $produits_count = count($produits);

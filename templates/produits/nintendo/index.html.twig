@@ -5,23 +5,15 @@
 {% endblock %}
 
 {% block stylesheets %}
-	{{ parent() }}
-	<!-- Customs CSS -->
-	<link
-	href="{{ asset('css/other-search.css') }}" rel="stylesheet"/>
-	<!-- Include AOS stylesheet -->
-	<link
-	href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
-	<!-- Inclure les liens vers les icônes Font Awesome -->
-	<link
-	rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-	<!-- Inclure les dépendances CSS de Bootstrap -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+	<!-- Bootstrap CSS -->
+	<link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="{{ asset('css/produits.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block javascripts %}
-	{{parent()}}
-	<script src="{{asset('js/dropdown.js')}}"></script>
+    {{parent()}}
+        <script src="{{asset('js/dropdown.js')}}"> </script>
 {% endblock %}
 
 {% block body %}

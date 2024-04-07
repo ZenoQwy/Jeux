@@ -21,7 +21,7 @@ class AvisController extends AbstractController
         if($request->isMethod('POST')){
             $form->handleRequest($request);
             if ($form->isSubmitted()&&$form->isValid()){   
-                $avis->setEmail($this->getUser()->getEmail());
+                $avis->setUser($this->getUser());
                 $avis->setDateEnvoi(new \Datetime());
                 $entityManagerInterface->persist($avis);
                 $entityManagerInterface->flush();

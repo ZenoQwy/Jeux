@@ -8,26 +8,48 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter; // Permet de faire des recherche 
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;  // Permet de filter par ordre alphabétique
+use Symfony\Component\Serializer\Annotation\Groups;
+
+#[ApiResource(paginationItemsPerPage: 20, 
+operations:[new Get(normalizationContext:['groups' => 'produits:item']),
+            new GetCollection(normalizationContext:['groups' => 'produits:list']),
+            ])] 
+#[ApiFilter(SearchFilter::class, properties: ['plateformes.libelle' => 'exact'])]
+
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 class Produit
 {
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups(['produits:list','produits:item'])]
     #[ORM\Column(length: 50)]
     private ?string $designation = null;
 
+    #[Groups(['produits:list','produits:item'])]
     #[ORM\Column]
     private ?float $prix = null;
 
+    #[Groups(['produits:list','produits:item'])]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[Groups(['produits:list','produits:item'])]
     #[ORM\Column(length: 255, nullable: true)]
     private string $image = '';
 
+    #[Groups(['produits:list','produits:item'])]
     #[ORM\Column]
     private ?int $nblikes = 0;
 
@@ -37,6 +59,7 @@ class Produit
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoris')]
     private Collection $users;
 
+    #[Groups(['produits:list','produits:item','plateformes:list','plateformes:item'])]
     #[ORM\ManyToMany(targetEntity: Plateforme::class, inversedBy: 'produits')]
     private Collection $plateformes;
 

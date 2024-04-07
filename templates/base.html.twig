@@ -5,10 +5,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		{% block stylesheets %}
-		<!-- Bootstrap CSS -->
-		<link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet"/>
-		<!-- Custom CSS -->
-		<link href="{{ asset('http://s3-4676.nuage-peda.fr/jeux/public/css/base.css') }}" rel="stylesheet">
+			<!-- Bootstrap CSS -->
+			<link
+			href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet"/>
+			<!-- Custom CSS -->
+			<link href="{{ asset('http://s3-4676.nuage-peda.fr/jeux/public/css/base.css') }}" rel="stylesheet">
 		{% endblock %}
 
 		<title>
@@ -16,7 +17,7 @@
 			{% endblock %}
 		</title>
 	</head>
-	
+
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark py-1 sticky-top" style="background: linear-gradient(to left, rgba(0, 0, 255), rgba(0, 0, 0))">
 			<div class="container-fluid ">
@@ -26,11 +27,12 @@
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarColor01">
-					<ul class="navbar-nav mx-auto">
+					<ul
+						class="navbar-nav mx-auto">
 						<!-- PC | Sans dropdown -->
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('produit-pc')}}" role="button" >
-								<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-pc-display" viewBox="0 0 16 16">
+							<a class="nav-link" href="{{ path('produit', {'designation': 'Pc'}) }}" role="button">
+								<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-pc-display" viewbox="0 0 16 16">
 									<path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V1Zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Zm2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0ZM9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5ZM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5ZM1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2H1.5Z"/>
 								</svg>
 								<span class="fs-4 px-1" style="text-transform:none;">| Pc</span>
@@ -39,18 +41,18 @@
 
 						<!-- Playstation | Sans dropdown -->
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('produit-playstation')}}" role="button" >
-								<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="white" class="bi bi-playstation" viewBox="0 0 16 16">
+							<a class="nav-link" href="{{ path('produit', {'designation': 'Playstation'}) }}" role="button">
+								<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="white" class="bi bi-playstation" viewbox="0 0 16 16">
 									<path d="M15.858 11.451c-.313.395-1.079.676-1.079.676l-5.696 2.046v-1.509l4.192-1.493c.476-.17.549-.412.162-.538-.386-.127-1.085-.09-1.56.08l-2.794.984v-1.566l.161-.054s.807-.286 1.942-.412c1.135-.125 2.525.017 3.616.43 1.23.39 1.368.962 1.056 1.356ZM9.625 8.883v-3.86c0-.453-.083-.87-.508-.988-.326-.105-.528.198-.528.65v9.664l-2.606-.827V2c1.108.206 2.722.692 3.59.985 2.207.757 2.955 1.7 2.955 3.825 0 2.071-1.278 2.856-2.903 2.072Zm-8.424 3.625C-.061 12.15-.271 11.41.304 10.984c.532-.394 1.436-.69 1.436-.69l3.737-1.33v1.515l-2.69.963c-.474.17-.547.411-.161.538.386.126 1.085.09 1.56-.08l1.29-.469v1.356l-.257.043a8.454 8.454 0 0 1-4.018-.323Z"/>
 								</svg>
 								<span class="fs-4 px-1" style="text-transform:none;">| Playstation</span>
 							</a>
 						</li>
-						
+
 						<!-- Xbox | Sans dropdown -->
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('produit-xbox')}}" role="button">
-								<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="white" class="bi bi-xbox" viewBox="0 0 16 16">
+							<a class="nav-link" href="{{ path('produit', {'designation': 'Xbox'}) }}" role="button">
+								<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="white" class="bi bi-xbox" viewbox="0 0 16 16">
 									<path d="M7.202 15.967a7.987 7.987 0 0 1-3.552-1.26c-.898-.585-1.101-.826-1.101-1.306 0-.965 1.062-2.656 2.879-4.583C6.459 7.723 7.897 6.44 8.052 6.475c.302.068 2.718 2.423 3.622 3.531 1.43 1.753 2.088 3.189 1.754 3.829-.254.486-1.83 1.437-2.987 1.802-.954.301-2.207.429-3.239.33Zm-5.866-3.57C.589 11.253.212 10.127.03 8.497c-.06-.539-.038-.846.137-1.95.218-1.377 1.002-2.97 1.945-3.95.401-.417.437-.427.926-.263.595.2 1.23.638 2.213 1.528l.574.519-.313.385C4.056 6.553 2.52 9.086 1.94 10.653c-.315.852-.442 1.707-.306 2.063.091.24.007.15-.3-.319Zm13.101.195c.074-.36-.019-1.02-.238-1.687-.473-1.443-2.055-4.128-3.508-5.953l-.457-.575.494-.454c.646-.593 1.095-.948 1.58-1.25.381-.237.927-.448 1.161-.448.145 0 .654.528 1.065 1.104a8.372 8.372 0 0 1 1.343 3.102c.153.728.166 2.286.024 3.012a9.495 9.495 0 0 1-.6 1.893c-.179.393-.624 1.156-.82 1.404-.1.128-.1.127-.043-.148ZM7.335 1.952c-.67-.34-1.704-.705-2.276-.803a4.171 4.171 0 0 0-.759-.043c-.471.024-.45 0 .306-.358A7.778 7.778 0 0 1 6.47.128c.8-.169 2.306-.17 3.094-.005.85.18 1.853.552 2.418.9l.168.103-.385-.02c-.766-.038-1.88.27-3.078.853-.361.176-.676.316-.699.312a12.246 12.246 0 0 1-.654-.319Z"/>
 								</svg>
 								<span class="fs-4 px-1" style="text-transform:none;">| Xbox</span>
@@ -59,8 +61,8 @@
 
 						<!-- Nintendo | Sans dropdown -->
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('produit-nintendo')}}" role="button">
-								<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="white" class="bi bi-nintendo-switch" viewBox="0 0 16 16">
+							<a class="nav-link" href="{{ path('produit', {'designation': 'Nintendo'}) }}" role="button">
+								<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="white" class="bi bi-nintendo-switch" viewbox="0 0 16 16">
 									<path d="M9.34 8.005c0-4.38.01-7.972.023-7.982C9.373.01 10.036 0 10.831 0c1.153 0 1.51.01 1.743.05 1.73.298 3.045 1.6 3.373 3.326.046.242.053.809.053 4.61 0 4.06.005 4.537-.123 4.976-.022.076-.048.15-.08.242a4.136 4.136 0 0 1-3.426 2.767c-.317.033-2.889.046-2.978.013-.05-.02-.053-.752-.053-7.979Zm4.675.269a1.621 1.621 0 0 0-1.113-1.034 1.609 1.609 0 0 0-1.938 1.073 1.9 1.9 0 0 0-.014.935 1.632 1.632 0 0 0 1.952 1.107c.51-.136.908-.504 1.11-1.028.11-.285.113-.742.003-1.053ZM3.71 3.317c-.208.04-.526.199-.695.348-.348.301-.52.729-.494 1.232.013.262.03.332.136.544.155.321.39.556.712.715.222.11.278.123.567.133.261.01.354 0 .53-.06.719-.242 1.153-.94 1.03-1.656-.142-.852-.95-1.422-1.786-1.256Z"/>
 									<path d="M3.425.053a4.136 4.136 0 0 0-3.28 3.015C0 3.628-.01 3.956.005 8.3c.01 3.99.014 4.082.08 4.39.368 1.66 1.548 2.844 3.224 3.235.22.05.497.06 2.29.07 1.856.012 2.048.009 2.097-.04.05-.05.053-.69.053-7.94 0-5.374-.01-7.906-.033-7.952-.033-.06-.09-.063-2.03-.06-1.578.004-2.052.014-2.26.05Zm3 14.665-1.35-.016c-1.242-.013-1.375-.02-1.623-.083a2.81 2.81 0 0 1-2.08-2.167c-.074-.335-.074-8.579-.004-8.907a2.845 2.845 0 0 1 1.716-2.05c.438-.176.64-.196 2.058-.2l1.282-.003v13.426Z"/>
 								</svg>
@@ -68,292 +70,269 @@
 							</a>
 						</li>
 
-						
+
 						<!-- Pc | Avec dropdown ( future mises à jours ) -->
-							<!--<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle " data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-									<svg xmlns="http://www.w3.org/2000/svg" width="35" height="23" xmlns:v="https://vecta.io/nano"><path d="M23.93 0H2.07C.929 0 0 .918 0 2.045V16.4c0 1.128.929 2.045 2.07 2.045h8.248l-1.981 2.053c-.14.194-.215.425-.215.663v.696c0 .303.122.593.339.808s.511.335.817.335h7.445c.307 0 .601-.12.817-.335s.338-.505.339-.808v-.696c0-.238-.075-.469-.215-.663l-1.981-2.053h8.248c1.141 0 2.07-.918 2.07-2.045V2.045C26 .918 25.072 0 30.93 0zm-.242 16.161H13.001 2.312V2.285h21.377v13.877z" fill="#fff"/></svg>
-									| Pc</a>
-								<div class="dropdown-menu">
-									<a class="text-decoration-none"href="{{path('produit')}}">Produits</a>
-								</div>
-						</li>-->
+					<!--<li class="nav-item dropdown">
+													<a class="nav-link dropdown-toggle " data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+														<svg xmlns="http://www.w3.org/2000/svg" width="35" height="23" xmlns:v="https://vecta.io/nano"><path d="M23.93 0H2.07C.929 0 0 .918 0 2.045V16.4c0 1.128.929 2.045 2.07 2.045h8.248l-1.981 2.053c-.14.194-.215.425-.215.663v.696c0 .303.122.593.339.808s.511.335.817.335h7.445c.307 0 .601-.12.817-.335s.338-.505.339-.808v-.696c0-.238-.075-.469-.215-.663l-1.981-2.053h8.248c1.141 0 2.07-.918 2.07-2.045V2.045C26 .918 25.072 0 30.93 0zm-.242 16.161H13.001 2.312V2.285h21.377v13.877z" fill="#fff"/></svg>
+														| Pc</a>
+													<div class="dropdown-menu">
+														<a class="text-decoration-none" href="{{ path('produit', {'designation': 'Pc'}) }}">Produits</a>
+													</div>
+											</li>-->
 
 
 						<!-- Playstation | Avec dropdown ( future mises à jours ) -->
-							<!--<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
-									<svg xmlns="http://www.w3.org/2000/svg" width="35" height="25" fill="#fff" fill-rule="evenodd" xmlns:v="https://vecta.io/nano">
-										<path d="M4.945 19.162c.728.264 2.044.189 2.94-.167l2.428-.976v2.825l-.483.088c-2.429.439-5.019.256-7.567-.674-2.377-.74-2.774-2.282-1.69-3.172 1.003-.822 2.705-1.439 2.705-1.439l7.035-2.768v3.154L5.25 18.041c-.896.355-1.031.859-.305 1.121zm24.785-.564c-.594.638-2.045 1.093-2.045 1.093L16.875 23v-2.439l7.954-2.417c.903-.275 1.042-.665.309-.869s-2.059-.146-2.962.129l-5.301 1.592v-2.531l.304-.088s1.534-.463 3.685-.668c2.154-.199 4.792.028 6.862.698 2.334.628 2.595 1.555 2.003 2.191zm-11.698-5.781V5.629c0-.842-.155-1.617-.947-1.838-.607-.198-.981.368-.981 1.21V23l-4.854-1.541V0c2.065.383 5.07 1.288 6.687 1.831 4.108 1.413 5.501 3.17 5.501 7.127 0 3.858-2.38 5.321-5.405 3.859z"></svg>
-										| Playstation</a>
-									<div class="dropdown-menu"></div>
-								</li>
-							</li>-->
-						
+						<!--<li class="nav-item dropdown">
+														<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
+															<svg xmlns="http://www.w3.org/2000/svg" width="35" height="25" fill="#fff" fill-rule="evenodd" xmlns:v="https://vecta.io/nano">
+																<path d="M4.945 19.162c.728.264 2.044.189 2.94-.167l2.428-.976v2.825l-.483.088c-2.429.439-5.019.256-7.567-.674-2.377-.74-2.774-2.282-1.69-3.172 1.003-.822 2.705-1.439 2.705-1.439l7.035-2.768v3.154L5.25 18.041c-.896.355-1.031.859-.305 1.121zm24.785-.564c-.594.638-2.045 1.093-2.045 1.093L16.875 23v-2.439l7.954-2.417c.903-.275 1.042-.665.309-.869s-2.059-.146-2.962.129l-5.301 1.592v-2.531l.304-.088s1.534-.463 3.685-.668c2.154-.199 4.792.028 6.862.698 2.334.628 2.595 1.555 2.003 2.191zm-11.698-5.781V5.629c0-.842-.155-1.617-.947-1.838-.607-.198-.981.368-.981 1.21V23l-4.854-1.541V0c2.065.383 5.07 1.288 6.687 1.831 4.108 1.413 5.501 3.17 5.501 7.127 0 3.858-2.38 5.321-5.405 3.859z"></svg>
+																| Playstation</a>
+															<div class="dropdown-menu"></div>
+														</li>
+													</li>-->
 
 
 						<!-- Xbox | Avec dropdown ( future mises à jours ) -->
-							<!--<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-									<svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" xmlns:v="https://vecta.io/nano"><path d="M5.128 26.291C7.764 28.601 11.221 30 15 30a14.95 14.95 0 0 0 9.878-3.709c2.346-2.39-5.395-10.886-9.878-14.271-4.477 3.385-12.224 11.881-9.872 14.271zm13.95-18.008c3.125 3.701 9.355 12.891 7.595 16.14C28.753 21.85 30 18.576 30 15.005c0-4.175-1.706-7.953-4.462-10.67 0 0-.034-.027-.103-.053a1.03 1.03 0 0 0-.351-.056c-.74 0-2.481.542-6.006 4.057zM4.568 4.283c-.071.025-.103.051-.107.053C1.706 7.053 0 10.83 0 15.005c0 3.568 1.248 6.841 3.326 9.416-1.751-3.256 4.474-12.439 7.6-16.138-3.525-3.516-5.27-4.056-6.008-4.056-.164 0-.279.026-.351.058v-.003zM15 4.439s-3.681-2.154-6.556-2.256c-1.129-.041-1.817.369-1.901.424C9.224.808 12.074 0 14.98 0H15c2.918 0 5.756.808 8.458 2.606-.085-.058-.769-.465-1.9-.424C18.683 2.285 15 4.431 15 4.431v.007z" fill="#fff"/></svg>
-									| Xbox</a>
-								<div class="dropdown-menu"></div>
-							</li>-->
+						<!--<li class="nav-item dropdown">
+														<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+															<svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" xmlns:v="https://vecta.io/nano"><path d="M5.128 26.291C7.764 28.601 11.221 30 15 30a14.95 14.95 0 0 0 9.878-3.709c2.346-2.39-5.395-10.886-9.878-14.271-4.477 3.385-12.224 11.881-9.872 14.271zm13.95-18.008c3.125 3.701 9.355 12.891 7.595 16.14C28.753 21.85 30 18.576 30 15.005c0-4.175-1.706-7.953-4.462-10.67 0 0-.034-.027-.103-.053a1.03 1.03 0 0 0-.351-.056c-.74 0-2.481.542-6.006 4.057zM4.568 4.283c-.071.025-.103.051-.107.053C1.706 7.053 0 10.83 0 15.005c0 3.568 1.248 6.841 3.326 9.416-1.751-3.256 4.474-12.439 7.6-16.138-3.525-3.516-5.27-4.056-6.008-4.056-.164 0-.279.026-.351.058v-.003zM15 4.439s-3.681-2.154-6.556-2.256c-1.129-.041-1.817.369-1.901.424C9.224.808 12.074 0 14.98 0H15c2.918 0 5.756.808 8.458 2.606-.085-.058-.769-.465-1.9-.424C18.683 2.285 15 4.431 15 4.431v.007z" fill="#fff"/></svg>
+															| Xbox</a>
+														<div class="dropdown-menu"></div>
+													</li>-->
 
 						<!-- Nintendo | Avec dropdown ( future mises à jours ) -->
-							<!--<li class="nav-item">
-								<a class="nav-link" href="#" role="button">
-									<svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="#fff" fill-rule="evenodd" xmlns:v="https://vecta.io/nano">
-										<path d="M20.462 11.687c-1.419-.033-2.55 1.192-2.569 2.569-.019 1.431 1.115 2.579 2.386 2.652 1.526.088 2.694-1.196 2.695-2.574.001-1.46-1.084-2.621-2.513-2.647zm-5.025 1.289V.372c0-.36.005-.365.365-.365l3.806.003c3.095.052 5.683 2.32 6.249 5.368a8.24 8.24 0 0 1 .135 1.476l.006 12.408c-.001 2.844-1.679 5.342-4.254 6.323-.716.273-1.462.403-2.224.409l-3.664.002c-.419 0-.419 0-.419-.442v-12.58zm-5.309 10.902V2.105h-.275c-1.061 0-2.122-.008-3.183.004a6.15 6.15 0 0 0-1.058.098c-1.99.371-3.546 2.297-3.547 4.382l.007 12.852c.006 1.279.518 2.363 1.428 3.236.874.838 1.927 1.207 3.108 1.212H9.91c.069 0 .139-.009.218-.014zm2.06-10.875v12.635c0 .329-.034.363-.353.363l-5.204-.002c-1.775 0-3.328-.6-4.618-1.86-.958-.937-1.577-2.087-1.845-3.423-.078-.388-.14-.788-.141-1.183L.043 6.481C.093 3.755 1.45 1.783 3.837.596c.88-.437 1.825-.598 2.8-.596h5.18c.357 0 .37.012.37.391v12.611zM4.064 8.111c-.039-1.26 1.023-2.428 2.422-2.423 1.364.005 2.46 1.029 2.451 2.478-.009 1.44-1.221 2.427-2.479 2.396-1.355-.033-2.404-1.086-2.395-2.451z">
-									</svg>
-									| Nintendo
-								</a>
-							</li>-->
+						<!--<li class="nav-item">
+														<a class="nav-link" href="#" role="button">
+															<svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="#fff" fill-rule="evenodd" xmlns:v="https://vecta.io/nano">
+																<path d="M20.462 11.687c-1.419-.033-2.55 1.192-2.569 2.569-.019 1.431 1.115 2.579 2.386 2.652 1.526.088 2.694-1.196 2.695-2.574.001-1.46-1.084-2.621-2.513-2.647zm-5.025 1.289V.372c0-.36.005-.365.365-.365l3.806.003c3.095.052 5.683 2.32 6.249 5.368a8.24 8.24 0 0 1 .135 1.476l.006 12.408c-.001 2.844-1.679 5.342-4.254 6.323-.716.273-1.462.403-2.224.409l-3.664.002c-.419 0-.419 0-.419-.442v-12.58zm-5.309 10.902V2.105h-.275c-1.061 0-2.122-.008-3.183.004a6.15 6.15 0 0 0-1.058.098c-1.99.371-3.546 2.297-3.547 4.382l.007 12.852c.006 1.279.518 2.363 1.428 3.236.874.838 1.927 1.207 3.108 1.212H9.91c.069 0 .139-.009.218-.014zm2.06-10.875v12.635c0 .329-.034.363-.353.363l-5.204-.002c-1.775 0-3.328-.6-4.618-1.86-.958-.937-1.577-2.087-1.845-3.423-.078-.388-.14-.788-.141-1.183L.043 6.481C.093 3.755 1.45 1.783 3.837.596c.88-.437 1.825-.598 2.8-.596h5.18c.357 0 .37.012.37.391v12.611zM4.064 8.111c-.039-1.26 1.023-2.428 2.422-2.423 1.364.005 2.46 1.029 2.451 2.478-.009 1.44-1.221 2.427-2.479 2.396-1.355-.033-2.404-1.086-2.395-2.451z">
+															</svg>
+															| Nintendo
+														</a>
+													</li>-->
 					</ul>
-						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-							<!-- Si user est connecté, et que c'est un admin, le bouton messagerie lui enverra sur la messagerie admin -->
-							{% if 'ROLE_ADMIN' in app.user.roles %}
-								<a class="me-2 text-decoration-none position-relative" href="{{ path('gestiondesproduits') }}">									
-									<img class="pt-1" src="{{ asset('images/icones/tools-white.svg') }}">																
-								</a>
-								<a class="me-2 text-decoration-none position-relative px-3" href="{{ path('adminmessagerie') }}">
-									<img class="pt-1" src="{{ asset('images/icones/mail-white.svg') }}">
-									{% if app.user.receivedSupports is not empty %}
-										{% set nbrmessage = app.user.receivedSupports|length %}
-										<span class="fs-6 badge bg-primary position-absolute translate-middle p-2" style="border-radius:200px;">{{ nbrmessage }}</span>
-									{% endif %}
-								</a>
-							{% endif %}
-
-							<!-- Si user est connecté, afficher en haut a droite, le canvas menu du compte quand l'icone est cliquée et le logo du panier avec le nombre d'articles mis en panier -->
-							<a class="me-2 position-relative text-decoration-none" href="{{path('panier')}}">
-								<img class="my-2 my-sm-0 py-1" src="{{asset('images/icones/panier.svg')}}">
-								{% if app.user.panier is not null %}
-									{% set nbProduitsPanier = 0 %}
-									{% for produits in app.user.panier.ajouters %}
-										{% set nbProduitsPanier = nbProduitsPanier + produits.getQte() %}
-									{% endfor %}
-									{% if nbProduitsPanier > 0 %}
-										<span class="fs-6 badge bg-primary position-absolute start-100 translate-middle p-2" style="border-radius:200px;">{{nbProduitsPanier}}</span>
-									{% endif %}
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<!-- Si user est connecté, et que c'est un admin, le bouton messagerie lui enverra sur la messagerie admin -->
+						{% if 'ROLE_ADMIN' in app.user.roles %}
+							<a class="me-2 text-decoration-none position-relative" href="{{ path('gestiondesproduits') }}">
+								<img class="pt-1" src="{{ asset('images/icones/tools-white.svg') }}">
+							</a>
+							<a class="me-2 text-decoration-none position-relative px-3" href="{{ path('adminmessagerie') }}">
+								<img class="pt-1" src="{{ asset('images/icones/mail-white.svg') }}">
+								{% if app.user.receivedSupports is not empty %}
+									{% set nbrmessage = app.user.receivedSupports|length %}
+									<span class="fs-6 badge bg-primary position-absolute translate-middle p-2" style="border-radius:200px;">{{ nbrmessage }}</span>
+								{% endif %}
+							</a>
 						{% endif %}
-							</a>
-							<a class="me-2 text-decoration-none" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-								<img class="px-2 my-2 my-sm-0" src="{{asset('images/icones/logoutilisateur.svg')}}">
-							</a>
-						{% else %}
+
+						<!-- Si user est connecté, afficher en haut a droite, le canvas menu du compte quand l'icone est cliquée et le logo du panier avec le nombre d'articles mis en panier -->
+						<a class="me-2 position-relative text-decoration-none" href="{{path('panier')}}">
+							<img class="my-2 my-sm-0 py-1" src="{{asset('images/icones/panier.svg')}}">
+							{% if app.user.panier is not null %}
+								{% set nbProduitsPanier = 0 %}
+								{% for produits in app.user.panier.ajouters %}
+									{% set nbProduitsPanier = nbProduitsPanier + produits.getQte() %}
+								{% endfor %}
+								{% if nbProduitsPanier > 0 %}
+									<span class="fs-6 badge bg-primary position-absolute start-100 translate-middle p-2" style="border-radius:200px;">{{nbProduitsPanier}}</span>
+								{% endif %}
+							{% endif %}
+						</a>
+						<a class="me-2 text-decoration-none" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+							<img class="px-2 my-2 my-sm-0" src="{{asset('images/icones/logoutilisateur.svg')}}">
+						</a>
+					{% else %}
 						<!--Sinon, l'icone envoie direct sur la page de connexion-->
-						<a class="me-2" href="{{path('app_login')}}"><img class="my-2 my-sm-0" src="{{asset('images/icones/logopersonne.svg')}}"></img></a>
-					{% endif %}
-				</div>
+						<a class="me-2" href="{{path('app_login')}}"><img class="my-2 my-sm-0" src="{{asset('images/icones/logopersonne.svg')}}"></img>
+					</a>
+				{% endif %}
 			</div>
-		</nav>
+		</div>
 	</body>
-</html>
-
-
-<!-- Le offcanva pannel de navigation de l'utilisateur-->
-<div class="d-flex justify-content-end">
-  <div class="offcanvas " tabindex="-1" id="offcanvasRight" style="height:320px; background: linear-gradient(to bottom, rgba(0, 0, 255, 1), rgba(0, 0, 0, 0.8)); position: fixed; top: 100px; right: 20px; width: auto; border-radius: 20px; box-shadow: 0 0 10px rgba(0, 0, 255, 0.2); border: 5px solid rgba(0, 0, 255, 0.8);">
-    <div class="offcanvas-header" style="padding: 0;"><h5 id="offcanvasRightLabel"></h5></div>
-      <div class="offcanvas-body" style="">
-        <div class="panel" style="list-style-type: none;">
-          <li>
-            <a class="btn btn-outline-primary text-white" href="{{path('support')}}" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Support</a>
-          </li>
-          <li>
-            <a class="btn btn-outline-primary text-white"href="{{path('compte')}}" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Mon compte</a>
-          </li>
-          <hr>
-          <li>
-			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-				{% set nbProduitLike = app.user.favoris|length %}
-				{% if nbProduitLike > 0 %}
-					<a class="btn btn-outline-primary text-white position-relative" href="{{path('favoris')}}" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Mes favoris<span class="fs-6 badge bg-primary mx-1 p-2 justify-content-centeralign-items-center" style="border-radius:50%; width:30px; height:30px; right:0;">{{nbProduitLike}}</span></a>
-				{% else %}
-					<a class="btn btn-outline-primary text-white position-relative" href="{{path('favoris')}}" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Mes favoris</a>
-				{% endif %} 
+</html></nav></body></html><!-- Le offcanva pannel de navigation de l'utilisateur--><div class="d-flex justify-content-end"><div class="offcanvas " tabindex="-1" id="offcanvasRight" style="height:320px; background: linear-gradient(to bottom, rgba(0, 0, 255, 1), rgba(0, 0, 0, 0.8)); position: fixed; top: 100px; right: 20px; width: auto; border-radius: 20px; box-shadow: 0 0 10px rgba(0, 0, 255, 0.2); border: 5px solid rgba(0, 0, 255, 0.8);"><div class="offcanvas-header" style="padding: 0;">
+<h5 id="offcanvasRightLabel"></h5></div><div class="offcanvas-body" style="">
+<div class="panel" style="list-style-type: none;">
+	<li>
+		<a class="btn btn-outline-primary text-white" href="{{path('support')}}" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Support</a>
+	</li>
+	<li>
+		<a class="btn btn-outline-primary text-white" href="{{path('compte')}}" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Mon compte</a>
+	</li>
+	<hr>
+	<li>
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			{% set nbProduitLike = app.user.favoris|length %}
+			{% if nbProduitLike > 0 %}
+				<a class="btn btn-outline-primary text-white position-relative" href="{{path('favoris')}}" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Mes favoris<span class="fs-6 badge bg-primary mx-1 p-2 justify-content-centeralign-items-center" style="border-radius:50%; width:30px; height:30px; right:0;">{{nbProduitLike}}</span>
+				</a>
+			{% else %}
+				<a class="btn btn-outline-primary text-white position-relative" href="{{path('favoris')}}" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Mes favoris</a>
 			{% endif %}
-          </li>
-          <li>
-            <a class="btn btn-outline-primary text-white" href="" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Mes achats</a>
-          </li>
-          <hr>
-          <li>
-            <a class="btn btn-outline-primary text-white" href="{{path('app_logout')}}" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Déconnexion</a>
-          </li>
-        </div>
-      </div>
-  </div>
-</div>
-<!---->
+		{% endif %}
+	</li>
+	<li>
+		<a class="btn btn-outline-primary text-white" href="" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Mes achats</a>
+	</li>
+	<hr>
+	<li>
+		<a class="btn btn-outline-primary text-white" href="{{path('app_logout')}}" style="text-decoration: none; border-color: transparent; border-radius: 50px; padding: 5px 10px;">Déconnexion</a>
+	</li>
+</div></div></div></div><!----><style>body {
+	background: #272727
+}
 
-<style>
-	
-	body{
-		background: #272727
-	}
+.btn-outline-primary {
+	color: #007bff;
+	background-color: transparent;
+	background-image: none;
+	border-color: #007bff;
+}
 
-	.btn-outline-primary {
-		color: #007bff;
-		background-color: transparent;
-		background-image: none;
-		border-color: #007bff;
-	}
+.btn-outline-primary:hover {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+}
 
-	.btn-outline-primary:hover {
-		color: #fff;
-		background-color: #007bff;
-		border-color: #007bff;
-	}
-
-	.offcanvas-header {
+.offcanvas-header {
 	margin-top: 0;
-	}
+}
 
-	body {
-  overflow-x: hidden; /* Empêche le défilement horizontal */
+body {
+	overflow-x: hidden; /* Empêche le défilement horizontal */
 }
 
 /* Si vous souhaitez masquer les barres de défilement verticales */
 ::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 /* Si vous souhaitez masquer les barres de défilement verticales pour Firefox */
 html {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 }
 
-	hr {
-		background-color: #fff;
-		height: 3px;
-		border: none;
-		margin: 15px;
-	}
+hr {
+	background-color: #fff;
+	height: 3px;
+	border: none;
+	margin: 15px;
+}
 
-	footer {
+footer {
 	background-color: black;
 	color: white;
 	bottom: 0;
 	width: 100% !important;
 	z-index: 100;
-	}
-    
-  .container-footer {
-      width: 90%;
-      margin: 0 auto;
-      padding: 30px 0;
-  }
-    
-  .row-footer {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-  }
-    
-  .col-4-footer {
-     width: 33.33%;
-  }
-    
-  ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-  }
-    
-  .social {
-      display: flex;
-      justify-content: flex-end;
-    }
-  
-  .social li {
-      margin-left: 10px;
-  }
-  
-  .social li:first-child {
-      margin-left: 0;
-  }
-  
-  .img-footer {
-      max-width: 100%;
-      height: auto;
-  }
-  
-  .p-footer {
-      margin: 0;
-      font-size: 14px;
-      text-align: start;
-  }
-  
-  
-  .liens-politiques:hover{
-      color:blue !important;
-  }
+}
 
-	@media (min-width: 768px) {
+.container-footer {
+	width: 90%;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+.row-footer {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.col-4-footer {
+	width: 33.33%;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.social {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.social li {
+	margin-left: 10px;
+}
+
+.social li:first-child {
+	margin-left: 0;
+}
+
+.img-footer {
+	max-width: 100%;
+	height: auto;
+}
+
+.p-footer {
+	margin: 0;
+	font-size: 14px;
+	text-align: start;
+}
+
+
+.liens-politiques:hover {
+	color: blue !important;
+}
+
+@media(min-width: 768px) {
 	.col-icons .img-fluid {
 		width: 50px; /* Ajustez la taille selon vos préférences */
 		height: 50px; /* Ajustez la taille selon vos préférences */
-		}
 	}
-
-	@media (max-width: 767px) {
-  .p-footer {
-    text-align: center;
-  }
 }
 
-@media (min-width: 768px) {
-  .p-footer {
-    text-align: left;
-  }
+@media(max-width: 767px) {
+	.p-footer {
+		text-align: center;
+	}
 }
 
-
-
-</style>
-
-</div></div>
-
-{% block body %}
-{% endblock %}
-
-
-<footer>
-  <div class="container-footer">
-    <div class="row">
-      <div class="col-12 col-md-4 col-footer">
-        <ul>
-          <li><a class="text-white liens-politiques text-decoration-none" href="{{path('ml')}}">Mentions légales</a></li>
-          <li><a class="text-white liens-politiques text-decoration-none" href="{{path('conditions')}}">Conditions générales de vente</a></li>
-          <li><a class="text-white liens-politiques text-decoration-none" href="{{path('confidentialite')}}">Politique de confidentialité</a></li>
-        </ul>
-      </div>
-      <div class="col-12 col-md-4 col-footer d-flex justify-content-center align-items-center">
-        <img src="http://s3-4676.nuage-peda.fr/jeux/public/images/logo/instantreboot.png" class="img-fluid img-footer" alt="Logo du site">
-      </div>
-      <div class="col-12 col-md-4 col-footer d-flex justify-content-center col-icons">
-        <ul class="social">
-          <li><a href="https://www.instagram.com/zenoqwy/"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/instagram.svg" class="img-fluid" alt="Instagram"></a></li>
-          <li><a href="https://www.facebook.com/profile.php?id=100006002778125"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/facebook.svg" class="img-fluid" alt="Facebook"></a></li>
-          <li><a href="https://www.youtube.com/channel/UCirxTJyN_hJKPpsDGnUbv_A"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/youtube.svg" class="img-fluid" alt="YouTube"></a></li>
-          <li><a href="https://www.twitter.com/"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/twitter.svg" class="img-fluid" alt="Twitter"></a></li>
-          <li><a href="https://discord.gg/WvzeQdavVm"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/discord.svg" class="img-fluid" alt="Discord"></a></li>
-          <li><a href="https://www.twitch.com/zenoqwy"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/twitch.svg" class="img-fluid" alt="Twitch"></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <hr>
-      <div class="col-12">
-		<p class="p-footer text-center text-lg-start">
-		Copyrigth © 2023 Instant Reboot. Tous droits réservés.
-		</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-{% block javascripts %}<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script><script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>{% endblock %}</body></html>
+@media(min-width: 768px) {
+	.p-footer {
+		text-align: left;
+	}
+}</style>{% block body %}{% endblock %}<footer><div class="container-footer"><div class="row">
+<div class="col-12 col-md-4 col-footer">
+	<ul>
+		<li><a class="text-white liens-politiques text-decoration-none"href="{{path('ml')}}">Mentions légales</a></li>
+		<li><a class="text-white liens-politiques text-decoration-none"href="{{path('conditions')}}">Conditions générales de vente</a></li>
+		<li><a class="text-white liens-politiques text-decoration-none"href="{{path('confidentialite')}}">Politique de confidentialité</a></li>
+	</ul>
+</div>
+<div class="col-12 col-md-4 col-footer d-flex justify-content-center align-items-center">
+	<img src="http://s3-4676.nuage-peda.fr/jeux/public/images/logo/instantreboot.png" class="img-fluid img-footer" alt="Logo du site">
+</div>
+<div class="col-12 col-md-4 col-footer d-flex justify-content-center col-icons">
+	<ul class="social">
+		<li>
+			<a href="https://www.instagram.com/zenoqwy/"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/instagram.svg" class="img-fluid" alt="Instagram"></a>
+		</li>
+		<li>
+			<a href="https://www.facebook.com/profile.php?id=100006002778125"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/facebook.svg" class="img-fluid" alt="Facebook"></a>
+		</li>
+		<li>
+			<a href="https://www.youtube.com/channel/UCirxTJyN_hJKPpsDGnUbv_A"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/youtube.svg" class="img-fluid" alt="YouTube"></a>
+		</li>
+		<li>
+			<a href="https://www.twitter.com/"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/twitter.svg" class="img-fluid" alt="Twitter"></a>
+		</li>
+		<li>
+			<a href="https://discord.gg/WvzeQdavVm"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/discord.svg" class="img-fluid" alt="Discord"></a>
+		</li>
+		<li>
+			<a href="https://www.twitch.com/zenoqwy"><img src="http://s3-4676.nuage-peda.fr/jeux/public/images/icones/twitch.svg" class="img-fluid" alt="Twitch"></a>
+		</li>
+	</ul>
+</div></div><div class="row">
+<hr>
+<div class="col-12">
+	<p class="p-footer text-center text-lg-start">
+		Copyrigth © 2024 Instant Reboot. Tous droits réservés.
+	</p>
+</div></div></div></footer>{% block javascripts %}<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script><script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>{% endblock %}</body></html>
