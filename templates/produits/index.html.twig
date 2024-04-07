@@ -33,7 +33,7 @@
 
 	<!--Barre de recherche-->
 	<div class="d-flex flex-column align-items-center justify-content-center my-4">
-		<form class="py-4 w-100" id='recherche' style="width: 40%;" action="{{path('search-pc')}}" method="get">
+		<form class="py-4 w-100" id='recherche' style="width: 40%;" method="get">
 			<div class="input-group">
 				<input class="form-control bg-primary text-white px-3 text-center" type="text" placeholder="Minecraft, Elden Ring, GTAV..." name="search-input"/>
 				<a onclick="effacerFormulaire()">
@@ -45,23 +45,23 @@
 					</a>
 					<script>
 						function effacerFormulaire() {
-document.getElementById("recherche").reset();
-}
+							document.getElementById("recherche").reset();
+						}
 					</script>
 				</div>
 			</form>
 			<div class="d-flex px-4 align-items-center">
 				<div class="d-flex px-4 align-items-center">
 					<div class="dropdown">
-						<button class="btn btn-primary fs-bold fs-5 px-5 dropdown-toggle" style="text-transform:none;border-radius:50px; height:50px;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-							<span>Trier par</span>
-						</button>
+								<button id="dropdownText" class="btn btn-primary fs-bold fs-5 px-5 dropdown-toggle" style="text-transform:none;border-radius:50px; height:50px;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									<span>Trier par</span>
+								</button>
 						<ul class="dropdown-menu fs-5" style="border-radius:15px; background-color:#272727;" aria-labelledby="dropdownMenuButton1">
 							<li>
-								<a id="priceAscendingOption" class="dropdown-item text-white" href="{{path('pc-search-by-price-asc')}}?sort=asc" onclick="setDropdownText('Prix ( croissant )')">Prix ( croissant )</a>
+								<a class="dropdown-item text-white sort-option" data-sort="asc" onclick="setDropdownText('Prix ( croissant )')" >Prix ( croissant )</a>
 							</li>
 							<li>
-								<a id="priceDescendingOption" class="dropdown-item text-white" href="{{path('pc-search-by-price-desc')}}?sort=desc" onclick="setDropdownText('Prix ( décroissant )')">Prix ( décroissant )</a>
+								<a class="dropdown-item text-white sort-option" data-sort="desc" onclick="setDropdownText('Prix ( décroissant )')">Prix ( décroissant )</a>
 							</li>
 						</ul>
 					</div>

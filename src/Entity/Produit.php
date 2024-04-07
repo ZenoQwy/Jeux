@@ -22,7 +22,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 operations:[new Get(normalizationContext:['groups' => 'produits:item']),
             new GetCollection(normalizationContext:['groups' => 'produits:list']),
             ])] 
-#[ApiFilter(SearchFilter::class, properties: ['plateformes.libelle' => 'exact'])]
+#[ApiFilter(SearchFilter::class, properties: ['plateformes.libelle' => 'exact','designation' => 'partial'])]
+#[ApiFilter(OrderFilter::class, properties: ['prix' => 'asc'])]
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 class Produit
