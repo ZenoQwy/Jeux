@@ -32,6 +32,7 @@ class Produit
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['produits:list','produits:item'])]
     private ?int $id = null;
 
     #[Groups(['produits:list','produits:item'])]

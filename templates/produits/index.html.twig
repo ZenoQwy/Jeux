@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{parent()}}
+	{{parent()}} {{ designation }}
 {% endblock %}
 
 {% block stylesheets %}
@@ -73,10 +73,10 @@
 		<div style="margin-bottom:200px;">
 			<div
 				class="container my-4">
-				<!--Barre de recherche-->
 				<div
-					class="row justify-content-start"><!-- Les produits seront insérés ici dynamiquement par JavaScript -->
+					class="row justify-content-start">
 				</div>
 			</div>
 		</div>
-	{% endblock %}
+		
+{% endblock %}

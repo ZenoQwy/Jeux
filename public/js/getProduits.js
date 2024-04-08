@@ -1,7 +1,7 @@
 const API_URL = "https://s3-4676.nuage-peda.fr/jeux/public/api/produits";
 const sortOptions = document.querySelectorAll('.sort-option');
 
-async function getProduits(page, plateforme, sortValue,searchValue) {
+async function getProduits(page, plateforme, sortValue, searchValue) {
     try {
         const response = await fetch(`${API_URL}?page=${page}&plateformes.libelle=${plateforme}&designation=${searchValue}&order%5Bprix%5D=${sortValue}`);
         console.log(response);
@@ -26,22 +26,21 @@ function afficherProduits(produits) {
         // Créer le HTML pour chaque produit
         const produitHTML = `
             <div class="col-md-4 p-0">
-                <div class="item">
-                    <a href="${produit.designation}">
-                        <picture>
-                            <img class="picture" src="https://s3-4676.nuage-peda.fr/jeux/public/images/produits/${produit.image}" style="max-width: 100%;">
-                        </picture>
-                    </a>
-                    <div class="information">
-                        <div class="text">
-                            <div class="name">
-                                <span class="title">${produit.designation}</span>
+            <a href="https://s3-4676.nuage-peda.fr/jeux/public/produit/${produit.id}-${produit.designation}">
+                    <div class="item">
+                                <img class="picture" src="https://s3-4676.nuage-peda.fr/jeux/public/images/produits/${produit.image}" style="max-width: 100%;">
+                        <div class="information">
+                            <div class="text">
+                                <div class="name">
+                                    <span class="title">${produit.designation}</span>
+                                </div>
                             </div>
+                                <div class="price px-2">${produit.prix}€</div>
                         </div>
-                        <div class="price px-2">${produit.prix}€</div>
                     </div>
+                    </a>
                 </div>
-            </div>
+ 
         `;
         // Ajouter le produit au conteneur
         produitsContainer.insertAdjacentHTML('beforeend', produitHTML);
@@ -58,11 +57,11 @@ sortOptions.forEach(option => {
             const designation = "{{ designation }}";
         });
 
-                    // Récupérer la valeur de tri à partir de l'attribut "data-sort"
-                    const sortValue = this.getAttribute('data-sort');
+        // Récupérer la valeur de tri à partir de l'attribut "data-sort"
+        const sortValue = this.getAttribute('data-sort');
 
-                    // Appeler la fonction afficherProduits avec la désignation de plateforme et la valeur de tri
-                    getProduits(1, designation, sortValue, "");
+        // Appeler la fonction afficherProduits avec la désignation de plateforme et la valeur de tri
+        getProduits(1, designation, sortValue, "");
     });
 });
 
@@ -74,10 +73,10 @@ searchInput.addEventListener('input', function () {
     const searchValue = this.value.trim().toLowerCase();
 
     // Appeler la fonction afficherProduits avec la désignation de plateforme et la valeur de recherche
-    getProduits(1, designation, "asc", searchValue);
+    getProduits(1, designation, "", searchValue);
 });
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    getProduits(1, designation,"asc",""); // Appel de getProduits avec le numéro de page 1 et la désignation de la plateforme actuelle
+    getProduits(1, designation, "", ""); // Appel de getProduits avec le numéro de page 1 et la désignation de la plateforme actuelle
 });
